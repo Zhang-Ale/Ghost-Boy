@@ -1,0 +1,349 @@
+fileFormatVersion: 2
+guid: 370f531335566dc4587c49c9708f5c8a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4165821611043381829
+    second: BenjaminAttackCombo1_0
+  - first:
+      213: -1688301380940188196
+    second: BenjaminAttackCombo1_1
+  - first:
+      213: -1974683955771050866
+    second: BenjaminAttackCombo1_2
+  - first:
+      213: -5779922288166149909
+    second: BenjaminAttackCombo1_3
+  - first:
+      213: -8634318367457935315
+    second: BenjaminAttackCombo1_4
+  - first:
+      213: -7889875946208224666
+    second: BenjaminAttackCombo1_5
+  - first:
+      213: 217040126793747339
+    second: BenjaminAttackCombo1_6
+  - first:
+      213: -1943637274082673291
+    second: BenjaminAttackCombo1_7
+  - first:
+      213: 8893191747280770496
+    second: BenjaminAttackCombo1_8
+  - first:
+      213: -4952921693384742796
+    second: BenjaminAttackCombo1_7
+  - first:
+      213: 2942238480062286687
+    second: BenjaminAttackCombo1_10
+  - first:
+      213: 563802927537037373
+    second: BenjaminAttackCombo1_11
+  - first:
+      213: -7364454298811979363
+    second: BenjaminAttackCombo1_0
+  - first:
+      213: -5488614307275219410
+    second: BenjaminAttackCombo1_1
+  - first:
+      213: -5888565256329900014
+    second: BenjaminAttackCombo1_2
+  - first:
+      213: -204185730823678646
+    second: BenjaminAttackCombo1_3
+  - first:
+      213: -6599341189199801328
+    second: BenjaminAttackCombo1_4
+  - first:
+      213: 1721951468793847096
+    second: BenjaminAttackCombo1_5
+  - first:
+      213: 6088723947154270485
+    second: BenjaminAttackCombo1_6
+  - first:
+      213: -4952921693384742796
+    second: BenjaminAttackCombo1_7
+  - first:
+      213: -4952921693384742796
+    second: BenjaminAttackCombo1_7
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BenjaminAttackCombo1_7
+      rect:
+        serializedVersion: 2
+        x: 2492
+        y: 164
+        width: 739
+        height: 385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478e97926ffa34bb0800000000000000
+      internalID: -4952921693384742796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BenjaminAttackCombo1_0
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 167
+        width: 153
+        height: 394
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99a6b275d33cc990800000000000000
+      internalID: -7364454298811979363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BenjaminAttackCombo1_1
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 165
+        width: 194
+        height: 394
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2edbb11e5684d3b0800000000000000
+      internalID: -5488614307275219410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BenjaminAttackCombo1_2
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 169
+        width: 227
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 210dfbb291d974ea0800000000000000
+      internalID: -5888565256329900014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BenjaminAttackCombo1_3
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 168
+        width: 254
+        height: 396
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a451d0ed8269a2df0800000000000000
+      internalID: -204185730823678646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BenjaminAttackCombo1_4
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 168
+        width: 288
+        height: 507
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 014542a372e6a64a0800000000000000
+      internalID: -6599341189199801328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BenjaminAttackCombo1_5
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 170
+        width: 399
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d5be1dcb995e710800000000000000
+      internalID: 1721951468793847096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BenjaminAttackCombo1_6
+      rect:
+        serializedVersion: 2
+        x: 1929
+        y: 170
+        width: 539
+        height: 413
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5196b85ab2e7f7450800000000000000
+      internalID: 6088723947154270485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

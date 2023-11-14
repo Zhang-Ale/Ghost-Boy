@@ -1,0 +1,382 @@
+fileFormatVersion: 2
+guid: a1fb166c89dc10a41ad0cdbeaf458a77
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7202530115866210742
+    second: Benji_Running_Final1_0
+  - first:
+      213: -4795576938096113388
+    second: Benji_Running_Final1_1
+  - first:
+      213: -5089109190557800170
+    second: Benji_Running_Final1_2
+  - first:
+      213: -2008953891037629467
+    second: Benji_Running_Final1_3
+  - first:
+      213: 470516152038042470
+    second: Benji_Running_Final1_4
+  - first:
+      213: -5196215735065967642
+    second: Benji_Running_Final1_5
+  - first:
+      213: 3038285742117289278
+    second: Benji_Running_Final1_6
+  - first:
+      213: -8588553269872722328
+    second: Benji_Running_Final1_7
+  - first:
+      213: 3407390106940673966
+    second: Benji_Running_Final1_8
+  - first:
+      213: 7078616676245535848
+    second: Benji_Running_Final1_9
+  - first:
+      213: 166986676666122920
+    second: Benji_Running_Final1_10
+  - first:
+      213: -6978298996208718822
+    second: Benji_Running_Final1_11
+  - first:
+      213: 4367935581737065799
+    second: Benji_Running_Final1_12
+  - first:
+      213: -2103128458723817334
+    second: Benji_Running_Final1_13
+  - first:
+      213: 7987271369943126887
+    second: Benji_Running_Final1_14
+  - first:
+      213: -8037023026096563077
+    second: Benji_Running_Final1_15
+  - first:
+      213: 882982499624525089
+    second: Benji_Running_Final1_16
+  - first:
+      213: -1912355357311354750
+    second: Benji_Running_Final1_17
+  - first:
+      213: -4493458794727684089
+    second: Benji_Running_Final1_18
+  - first:
+      213: -1650224063262319481
+    second: Benji_Running_Final1_19
+  - first:
+      213: 7256527607036489958
+    second: Benji_Running_Final1_20
+  - first:
+      213: -6686684798775404921
+    second: Benji_Running_Final1_21
+  - first:
+      213: -8547287362935187372
+    second: Benji_Running_Final1_22
+  - first:
+      213: -3382151215592636382
+    second: Benji_Running_Final1_23
+  - first:
+      213: -17251833547487423
+    second: Benji_Running_Final1_24
+  - first:
+      213: -1320346990474687800
+    second: Benji_Running_Final1_25
+  - first:
+      213: 8134186599396056209
+    second: Benji_Running_Final1_26
+  - first:
+      213: -6345584443661035368
+    second: Benji_Running_Final1_27
+  - first:
+      213: 6615703679074801226
+    second: Benji_Running_Final1_28
+  - first:
+      213: 7840876591017051118
+    second: Benji_Running_Final1_29
+  - first:
+      213: 1691800824040125758
+    second: Benji_Running_Final1_30
+  - first:
+      213: -7814656480858459415
+    second: Benji_Running_Final1_31
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 120
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Benji_Running_Final1_0
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 142
+        width: 321
+        height: 446
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b13240daf684f360800000000000000
+      internalID: 7202530115866210742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benji_Running_Final1_1
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 169
+        width: 452
+        height: 427
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 419c9bfce20b27db0800000000000000
+      internalID: -4795576938096113388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benji_Running_Final1_2
+      rect:
+        serializedVersion: 2
+        x: 2072
+        y: 146
+        width: 322
+        height: 441
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61960a9872adf59b0800000000000000
+      internalID: -5089109190557800170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benji_Running_Final1_4
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 152
+        width: 424
+        height: 431
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66baf4782fb978600800000000000000
+      internalID: 470516152038042470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benji_Running_Final1_5
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 146
+        width: 363
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e30917d15553e7b0800000000000000
+      internalID: -5196215735065967642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benji_Running_Final1_7
+      rect:
+        serializedVersion: 2
+        x: 2476
+        y: 160
+        width: 448
+        height: 421
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e77be1e445fc880800000000000000
+      internalID: -8588553269872722328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benji_Running_Final1_10
+      rect:
+        serializedVersion: 2
+        x: 3525
+        y: 144
+        width: 285
+        height: 433
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a248e86f71415200800000000000000
+      internalID: 166986676666122920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Benji_Running_Final1_11
+      rect:
+        serializedVersion: 2
+        x: 3016
+        y: 160
+        width: 373
+        height: 409
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1ca38a190a182f90800000000000000
+      internalID: -6978298996208718822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Music
+  - Enemy
+  - Shaker
+  - HPbar
+  - Foreground
+  - Midground
+  - Background
+  - Ground
+  - TriggerRock
+  - Checkpoint
+  - FallDetector
+  - Panel
+  - HealthBar
+  - DBF
+  - SBF
+  - Collectable
+  - Interactable
+  - Guidance
+  - LoadPreviousLevel
+  - LoadNextLevel
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Enemies
+  - OneWayPlat
+  - Platforms
+  - MovablePlat
+  - Background
+  - Midground
+  - Foreground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1201223829
+    locked: 0
+  - name: Midground
+    uniqueID: 2592323775
+    locked: 0
+  - name: Foreground
+    uniqueID: 2366664627
+    locked: 0
+  - name: UI
+    uniqueID: 2716908535
+    locked: 0
