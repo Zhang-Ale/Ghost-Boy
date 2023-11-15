@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement; 
 using TMPro;
 
-public class SpawnOnlyUI : MonoBehaviour
+public class SpawnOnlyUI : UISubject
 {
     [Header("GameStartUI")]
     public MenuActs menu;
@@ -62,6 +62,7 @@ public class SpawnOnlyUI : MonoBehaviour
     {
         if (menu.startActivated)
         {
+            NotifyObservers(PlayerActions.NewLevel);
             storyTextPF.FadeOut();
             fullScreenPF.FadeOut();
             IntroText.SetActive(false);
@@ -69,6 +70,7 @@ public class SpawnOnlyUI : MonoBehaviour
             ContinueButton.SetActive(false);
             player.SetActive(true);
             CharacterInfoUI.alpha = 1;
+            Debug.Log("0");
             InvokeRepeating("LightsOn", 0.1f, 0.2f);
             if (benjiLight.intensity == 1f)
             {

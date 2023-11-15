@@ -14,7 +14,9 @@ public class PlayerObserverSystem : MonoBehaviour, IObserver
     AudioSource _audioPlayer;
     public GameObject fullScreenPanel;
     public float Duration = 1f;
+    private bool mFaded = false;
     public GameObject levelText;
+    CanvasGroup bpCanvGroup;
     void Start()
     {
         _audioPlayer = GetComponent<AudioSource>();
@@ -40,14 +42,16 @@ public class PlayerObserverSystem : MonoBehaviour, IObserver
 
             case (PlayerActions.FadeIn):
                 fullScreenPanel.SetActive(true);
-                CanvasGroup bpCanvGroup = fullScreenPanel.GetComponent<CanvasGroup>();
-                StartCoroutine(ActionOne(bpCanvGroup));
+                bpCanvGroup = fullScreenPanel.GetComponent<CanvasGroup>();
+                StartCoroutine(ActionOne(bpCanvGroup, bpCanvGroup.alpha, mFaded ? 0 : 1));
                 return;
 
             case (PlayerActions.NewLevel):
                 levelText.SetActive(true);
                 CanvasGroup ltCanvGroup = levelText.GetComponent<CanvasGroup>();
-                StartCoroutine(ActionOne(ltCanvGroup));
+                StartCoroutine(ActionOne(ltCanvGroup, ltCanvGroup.alpha, mFaded ? 0 : 1));
+                bpCanvGroup = fullScreenPanel.GetComponent<CanvasGroup>();
+                StartCoroutine(ActionOne(bpCanvGroup, bpCanvGroup.alpha, mFaded ? 1 : 0));
                 return;
 
             case (PlayerActions.ContinueButton):
@@ -66,16 +70,16 @@ public class PlayerObserverSystem : MonoBehaviour, IObserver
                 return;
         }
     }
-    public IEnumerator ActionOne(CanvasGroup canvGroup)
+    public IEnumerator ActionOne(CanvasGroup canvGroup, float start, float end)
     {
         float counter = 0f;
+        yield return new WaitForSeconds(0.5f);
         while (counter < Duration)
         {
             counter += Time.deltaTime;
-            canvGroup.alpha = Mathf.Lerp(0, 1, counter / Duration);
+            canvGroup.alpha = Mathf.Lerp(start, end, counter / Duration);
             yield return null;
         }
-        yield return new WaitForSeconds(0.25f);
     }
 
     private void OnEnable()

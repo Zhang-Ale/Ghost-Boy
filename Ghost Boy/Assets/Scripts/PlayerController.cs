@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
     private float movementInputDirection;
 
     private int amountOfJumpsLeft;
@@ -62,7 +61,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Dialogue1;
     public GameObject Interactable2;
     public GameObject Dialogue2;
-    SceneManagement SM; 
+
     void Start()
     {
         respawnPoint = transform.position;
@@ -72,7 +71,6 @@ public class PlayerController : MonoBehaviour
         slider.value = 0f;
         canShortJump = false;
         canLongJump = false;
-        SM = GameObject.Find("SceneManager").GetComponent<SceneManagement>(); 
     }
 
     void Update()
@@ -149,7 +147,7 @@ public class PlayerController : MonoBehaviour
     {
         movementInputDirection = Input.GetAxisRaw("Horizontal");
         
-        if (GB._stopActivate)
+        if (GB != null && GB._stopActivate)
         {
             canShortJump = true;
         }
@@ -162,7 +160,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (D2Image._stopActivate)
+        if (D2Image!= null && D2Image._stopActivate)
         {
             canShortJump = false;
             canLongJump = true;
@@ -349,12 +347,13 @@ public class PlayerController : MonoBehaviour
 
         if (collision.tag == "LoadPreviousLevel")
         {
-            SM.StartCoroutine("Previous_Scene");
+            StartCoroutine(SceneManagement.Instance.Previous_Scene());
         }
 
         if (collision.tag == "LoadNextLevel")
         {
-            SM.StartCoroutine("Next_Scene");
+
+            StartCoroutine(SceneManagement.Instance.Next_Scene());
         }
     }
 }

@@ -10,7 +10,7 @@ public class SceneManagement : UISubject
     int Scene_index;
     [Tooltip("the level display")]
     public TextMeshProUGUI LevelText;
-    private string levelName;
+    [SerializeField] string levelName;
 
     public void Awake()
     {
@@ -28,11 +28,6 @@ public class SceneManagement : UISubject
 
     public void Start()
     {
-        SetLevelName();
-    }
-
-    private void SetLevelName()
-    {
         levelName = SceneManager.GetActiveScene().name;
         if (LevelText != null)
         {
@@ -40,23 +35,39 @@ public class SceneManagement : UISubject
         }
     }
 
+    private void SetLevelName(int Scene_index, string LevelName)
+    {
+        if (LevelText != null)
+        {
+            LevelText.text = "<< " + LevelName + " >>";
+        }
+    }
+
     public IEnumerator Previous_Scene()
     {
         NotifyObservers(PlayerActions.FadeIn);
-        yield return new WaitForSeconds(1.25f); 
+        yield return new WaitForSeconds(1.25f);
+        PermanentUIManager.Instance.OnLoadNewScene();
+        yield return new WaitForSeconds(1.25f);
         Scene_index = SceneManager.GetActiveScene().buildIndex - 1;
         SceneManager.LoadSceneAsync(Scene_index);
-        SetLevelName();
+        levelName = SceneManager.GetActiveScene().name;
+        SetLevelName(Scene_index, levelName);
         NotifyObservers(PlayerActions.NewLevel);
+        yield return null;
     }
 
     public IEnumerator Next_Scene()
     {
         NotifyObservers(PlayerActions.FadeIn);
-        yield return new WaitForSeconds(1.25f); 
+        yield return new WaitForSeconds(1.25f);
+        PermanentUIManager.Instance.OnLoadNewScene();
+        yield return new WaitForSeconds(1.25f);
         Scene_index = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadSceneAsync(Scene_index);
-        SetLevelName();
+        levelName = SceneManager.GetActiveScene().name;
+        SetLevelName(Scene_index, levelName);
         NotifyObservers(PlayerActions.NewLevel);
+        yield return null; 
     }
 }
