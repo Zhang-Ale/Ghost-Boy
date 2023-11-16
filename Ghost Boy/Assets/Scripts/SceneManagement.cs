@@ -51,6 +51,7 @@ public class SceneManagement : UISubject
         yield return new WaitForSeconds(1.25f);
         Scene_index = SceneManager.GetActiveScene().buildIndex - 1;
         SceneManager.LoadSceneAsync(Scene_index);
+        yield return new WaitForSeconds(2f);
         levelName = SceneManager.GetActiveScene().name;
         SetLevelName(Scene_index, levelName);
         NotifyObservers(PlayerActions.NewLevel);
@@ -65,6 +66,7 @@ public class SceneManagement : UISubject
         yield return new WaitForSeconds(1.25f);
         Scene_index = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadSceneAsync(Scene_index);
+        yield return new WaitForSeconds(2f);
         levelName = SceneManager.GetActiveScene().name;
         SetLevelName(Scene_index, levelName);
         NotifyObservers(PlayerActions.NewLevel);

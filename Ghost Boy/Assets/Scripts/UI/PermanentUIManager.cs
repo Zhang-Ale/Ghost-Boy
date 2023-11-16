@@ -19,7 +19,7 @@ public class PermanentUIManager : MonoBehaviour
         {
             Instance = this; 
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     void Start()
     {

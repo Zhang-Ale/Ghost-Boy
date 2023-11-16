@@ -63,7 +63,7 @@ public class MenuActs : MonoBehaviour
     {
         startMenu.SetActive(false);
         startMenuOpen = false;
-        if (!startActivated && sceneName == "SpawnPlace")
+        if (!startActivated && sceneName == "Spawn")
         {
             gameStart = true;
         }

@@ -62,7 +62,6 @@ public class SpawnOnlyUI : UISubject
     {
         if (menu.startActivated)
         {
-            NotifyObservers(PlayerActions.NewLevel);
             storyTextPF.FadeOut();
             fullScreenPF.FadeOut();
             IntroText.SetActive(false);
@@ -70,7 +69,6 @@ public class SpawnOnlyUI : UISubject
             ContinueButton.SetActive(false);
             player.SetActive(true);
             CharacterInfoUI.alpha = 1;
-            Debug.Log("0");
             InvokeRepeating("LightsOn", 0.1f, 0.2f);
             if (benjiLight.intensity == 1f)
             {

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerObserverSystem : MonoBehaviour, IObserver
 {
-
     [SerializeField] UISubject _playerSubject;
     [SerializeField] int _jumpCount = 0;
     int _jumpAudioThreshold = 3;
@@ -47,7 +46,6 @@ public class PlayerObserverSystem : MonoBehaviour, IObserver
                 return;
 
             case (PlayerActions.NewLevel):
-                levelText.SetActive(true);
                 CanvasGroup ltCanvGroup = levelText.GetComponent<CanvasGroup>();
                 StartCoroutine(ActionOne(ltCanvGroup, ltCanvGroup.alpha, mFaded ? 0 : 1));
                 bpCanvGroup = fullScreenPanel.GetComponent<CanvasGroup>();
