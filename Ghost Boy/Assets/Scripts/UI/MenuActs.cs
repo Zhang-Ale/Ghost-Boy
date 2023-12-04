@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; 
 
 public class MenuActs : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class MenuActs : MonoBehaviour
     public bool startMenuOpen = true;
     public bool achieMenuOpen = false;
     public bool startActivated = false;
-    public GameObject startMenu;
-    public GameObject achieMenu;
-    public GameObject soulStoriesMenu;
-    public GameObject collectablesMenu; 
+    public GameObject startMenu, achieMenu;
+    public GameObject soulsPage, collectablesPage, charactersPage;
+    public Image[] tabButtonImages; 
+    AudioSource AS;
+
     [Header("PauseMenu")]
     public bool gameIsPaused;
     CanvasGroup fullScreenCanv;
@@ -23,6 +25,7 @@ public class MenuActs : MonoBehaviour
 
     public void Start()
     {
+        AS = GetComponent<AudioSource>();
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         fullScreenCanv = GameObject.Find("FullScreenPanel").GetComponent<CanvasGroup>();
@@ -38,6 +41,7 @@ public class MenuActs : MonoBehaviour
     {
         gameIsPaused = true;
         Time.timeScale = 0;
+        AS.Play();
         ResumeBut.SetActive(true);
         ESCToMenu.SetActive(true);
         fullScreenCanv.alpha = 1f;
@@ -46,6 +50,7 @@ public class MenuActs : MonoBehaviour
     {
         gameIsPaused = false;
         Time.timeScale = 1;
+        AS.Play();
         ResumeBut.SetActive(false);
         ESCToMenu.SetActive(false);
         fullScreenCanv.alpha = 0f;
@@ -55,12 +60,14 @@ public class MenuActs : MonoBehaviour
         ResumeBut.SetActive(false);
         ESCToMenu.SetActive(false);
         fullScreenCanv.alpha = 1f;
+        AS.Play();
         startMenu.SetActive(true);
         startMenuOpen = true;
         Time.timeScale = 0;
     }
     public void PlayGame()
     {
+        AS.Play();
         startMenu.SetActive(false);
         startMenuOpen = false;
         if (!startActivated && sceneName == "Spawn")
@@ -75,44 +82,54 @@ public class MenuActs : MonoBehaviour
     }
     public void AchieveMenu()
     {
+        AS.Play();
         startMenu.SetActive(false);
         startMenuOpen = false;
         achieMenu.SetActive(true);
         achieMenuOpen = true;
     }
-    public void Stories()
+    public void Souls()
     {
-        achieMenu.SetActive(false);
-        achieMenuOpen = false;
-        soulStoriesMenu.SetActive(true);
+        AS.Play();
+        charactersPage.SetActive(false);
+        collectablesPage.SetActive(false);
+        tabButtonImages[0].color = Color.white;
+        tabButtonImages[1].color = Color.grey;
+        tabButtonImages[2].color = Color.grey;
+        soulsPage.SetActive(true);
     }
     public void Collectables()
     {
-        achieMenu.SetActive(false);
-        achieMenuOpen = false;
-        collectablesMenu.SetActive(true);
+        AS.Play();
+        soulsPage.SetActive(false);
+        charactersPage.SetActive(false);
+        tabButtonImages[1].color = Color.white;
+        tabButtonImages[0].color = Color.grey;
+        tabButtonImages[2].color = Color.grey;
+        collectablesPage.SetActive(true);
+    }
+    public void Characters()
+    {
+        AS.Play();
+        collectablesPage.SetActive(false);
+        soulsPage.SetActive(false);
+        tabButtonImages[2].color = Color.white;
+        tabButtonImages[1].color = Color.grey;
+        tabButtonImages[0].color = Color.grey;
+        charactersPage.SetActive(true);
     }
     public void ExitAchieMenu()
     {
+        AS.Play();
         achieMenu.SetActive(false);
         achieMenuOpen = false;
         startMenu.SetActive(true);
         startMenuOpen = true;
     }
-    public void ExitSoulStoriesMenu()
-    {
-        soulStoriesMenu.SetActive(false);
-        achieMenu.SetActive(true);
-        achieMenuOpen = true;       
-    }
-    public void ExitCollectablesMenu()
-    {
-        collectablesMenu.SetActive(false);
-        achieMenu.SetActive(true);
-        achieMenuOpen = true;
-    }
+    
     public void ExitGame()
     {
+        AS.Play();
         Application.Quit();
     }
 }

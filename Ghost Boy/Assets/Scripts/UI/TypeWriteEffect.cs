@@ -14,10 +14,12 @@ public class TypeWriteEffect : MonoBehaviour
 
     bool one_click = false;
     float timer_for_double_click;
-    float delay = 0.5f; 
+    float delay = 0.5f;
+    GameObject fastForwardUI; 
 
     void Start()
     {
+        fastForwardUI = transform.GetChild(0).gameObject;
         isCoroutineStarted = false; 
     }
 
@@ -42,7 +44,8 @@ public class TypeWriteEffect : MonoBehaviour
     {
         if (startType & !isCoroutineStarted)
         {
-            StartCoroutine(ShowText());           
+            StartCoroutine(ShowText());
+            fastForwardUI.SetActive(true);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -65,7 +68,8 @@ public class TypeWriteEffect : MonoBehaviour
                     currentText = fullText.Substring(0, fullText.Length);
                     this.GetComponent<TextMeshProUGUI>().text = currentText;
                     allTyped = true;
-                    one_click = false; 
+                    one_click = false;
+                    fastForwardUI.SetActive(false);
                 }
             }        
         }

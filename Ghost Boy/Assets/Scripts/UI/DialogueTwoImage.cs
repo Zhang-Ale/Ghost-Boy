@@ -37,6 +37,10 @@ public class DialogueTwoImage : MonoBehaviour
         {
             itemAnim.SetBool("ItemDisappear", true);
             itemAnim.SetBool("ItemReset", false);
+            if (!ItemAnimIsPlaying())
+            {
+                _itemImage.SetActive(false);
+            }
         }
 
         if (showDialogue2Memory)
@@ -50,6 +54,10 @@ public class DialogueTwoImage : MonoBehaviour
         {
             memoryAnim.SetBool("MemoryDisappear", true);
             memoryAnim.SetBool("MemoryReset", false);
+            if (!MemoryAnimIsPlaying())
+            {
+                _memoryImage.SetActive(false);
+            }
         }
         
         if(_activateGuidance)
@@ -66,6 +74,18 @@ public class DialogueTwoImage : MonoBehaviour
         {
             Dialogue2 = false; 
         }
+    }
+
+    bool ItemAnimIsPlaying()
+    {
+        return itemAnim.GetCurrentAnimatorStateInfo(0).length >
+               itemAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+    }
+
+    bool MemoryAnimIsPlaying()
+    {
+        return memoryAnim.GetCurrentAnimatorStateInfo(0).length >
+               memoryAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 
     IEnumerator Activate()

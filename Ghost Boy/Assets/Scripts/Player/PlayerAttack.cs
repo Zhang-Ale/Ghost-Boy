@@ -34,8 +34,8 @@ public class PlayerAttack : MonoBehaviour
     { 
          animator.SetTrigger("isAttackOne");
          Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitBox.position, attackRange, enemyLayers);
-         foreach (Collider2D enemy in hitEnemies)
-         {      
+        foreach (Collider2D enemy in hitEnemies)
+        {
             if (enemy.GetComponent<Feelie_Behaviour>() == true)
             {
                 enemy.GetComponent<Feelie_Behaviour>().TakeDamage(attackDamage);
@@ -45,7 +45,15 @@ public class PlayerAttack : MonoBehaviour
             {
                 enemy.GetComponent<TriggerRocks>().DestroyRock();
             }
-         }      
+            if (enemy.GetComponent<Enemy>() == true)
+            {
+                Enemy _enemy = enemy.gameObject.GetComponent<Enemy>();
+                if (_enemy != null && _enemy.damageType == DamageTypes.rock)
+                {
+                    _enemy.TakeDamage(10);
+                }
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()

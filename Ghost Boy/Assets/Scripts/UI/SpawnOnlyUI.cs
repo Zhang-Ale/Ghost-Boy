@@ -21,6 +21,7 @@ public class SpawnOnlyUI : UISubject
     public Light2D benjiLight;
     public Light2D firstLight;
     float progress = 0;
+    AudioSource AS; 
 
     [Header("GameplayUI")] 
     public DialogueTwoImage D2Image;
@@ -42,7 +43,8 @@ public class SpawnOnlyUI : UISubject
     void Start()
     {
         clicked = false;
-        storyDisplaying = false; 
+        storyDisplaying = false;
+        AS = GetComponent<AudioSource>();
     }
 
     public void SpawnLevelStart()
@@ -62,6 +64,7 @@ public class SpawnOnlyUI : UISubject
     {
         if (menu.startActivated)
         {
+            AS.Play(); 
             storyTextPF.FadeOut();
             fullScreenPF.FadeOut();
             IntroText.SetActive(false);

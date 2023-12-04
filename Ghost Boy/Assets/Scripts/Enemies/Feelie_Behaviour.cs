@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class Feelie_Behaviour : MonoBehaviour
+public class Feelie_Behaviour : Enemy
 {
     #region Public Variables
     public float attackDistance;
@@ -59,6 +59,7 @@ public class Feelie_Behaviour : MonoBehaviour
         music = GameObject.Find("Main Camera").GetComponent<Music>();
         HealthBar.SetHealth(currentHealth, maxHealth);
         flipped = false;
+        damageType = DamageTypes.ghost;
     }
 
     void FixedUpdate()
@@ -125,10 +126,11 @@ public class Feelie_Behaviour : MonoBehaviour
         Debug.Log("ended");
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         StartCoroutine(ControlMove());
-        currentHealth -= damage;
+        currentHealth = Mathf.Max(currentHealth - damage, 0);
+        //currentHealth -= damage;
         FlashColor(0.2f);
         Instantiate(bloodEffect, blinkLight.transform.position, Quaternion.identity);
         anim.SetTrigger("Damaged");

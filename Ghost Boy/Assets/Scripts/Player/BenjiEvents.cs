@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.UI;
 
-public class BenjiLights : MonoBehaviour
+public class BenjiEvents : MonoBehaviour
 {
     public Light2D myLight;
     public bool spawnFade = true;
@@ -54,8 +54,7 @@ public class BenjiLights : MonoBehaviour
     {
         if (collision.gameObject.name == "PlaceSwitch")
         {
-            leaveButtonOn = true;
-            
+            leaveButtonOn = true;   
         }
         else
         {

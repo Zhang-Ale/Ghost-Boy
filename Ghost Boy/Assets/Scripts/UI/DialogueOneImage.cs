@@ -33,6 +33,10 @@ public class DialogueOneImage : MonoBehaviour
         else
         {
             itemAnim.SetBool("ItemDisappear", true);
+            if(!ItemAnimIsPlaying())
+            {
+                _itemImage.SetActive(false);
+            }
         }
             
         if (showDialogue1Memory)
@@ -43,7 +47,23 @@ public class DialogueOneImage : MonoBehaviour
         else
         {
             memoryAnim.SetBool("MemoryDisappear", true);
+            if (!MemoryAnimIsPlaying())
+            {
+                _memoryImage.SetActive(false);
+            }
         }
+    }
+
+    bool ItemAnimIsPlaying()
+    {
+        return itemAnim.GetCurrentAnimatorStateInfo(0).length >
+               itemAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+    }
+
+    bool MemoryAnimIsPlaying()
+    {
+        return memoryAnim.GetCurrentAnimatorStateInfo(0).length >
+               memoryAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
