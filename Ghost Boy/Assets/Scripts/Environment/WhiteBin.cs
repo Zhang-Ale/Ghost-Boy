@@ -16,7 +16,7 @@ public class WhiteBin : MonoBehaviour
             inside = true;
             
             if (Input.GetKey(KeyCode.F))
-            {                
+            {
                 StartCoroutine(VideoPlay());
             }
         }

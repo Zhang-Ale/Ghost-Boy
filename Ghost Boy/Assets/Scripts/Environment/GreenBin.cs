@@ -62,11 +62,13 @@ public class GreenBin : MonoBehaviour
             _activateGuidance = false;
         }
     }
+
     IEnumerator CloseInstruction()
     {
         yield return new WaitForSeconds(3f);
         Instruction.SetActive(false);
     }
+
     public void Fade()
     {
         progress += 0.2f;

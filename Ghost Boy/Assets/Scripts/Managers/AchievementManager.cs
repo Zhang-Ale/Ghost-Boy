@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AchievementManager : MonoBehaviour, IObserver
+public class AchievementManager : Singleton<AchievementManager>, IObserver
 {
     [SerializeField] UISubject _playerSubject;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(this);
+    }
 
     public void OnNotify(PlayerActions action)
     {

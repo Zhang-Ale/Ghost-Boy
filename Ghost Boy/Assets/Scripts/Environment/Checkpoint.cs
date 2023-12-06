@@ -14,14 +14,15 @@ public class Checkpoint : MonoBehaviour
     public void Start()
     {
         encountered = true;
-        //GuidanceManager.instance.RegisterCheckpoints(this);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
             if (encountered)
             {
+                GameManager.Instance.RegisterCheckpoints(this);
                 AS1.Play();
                 AS2.Play();
                 Instantiate(particle, transform.position, Quaternion.identity);

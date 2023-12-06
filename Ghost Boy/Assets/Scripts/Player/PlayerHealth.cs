@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int curHealth = 0;
     public int maxHealth = 100;
-    Slider healthBar;
+    [SerializeField] Slider healthBar;
 
     public PlayerController PC;
     public int blinks;
@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        if(healthBar != null)
+        if(healthBar == null)
         {
             healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
             healthBar.maxValue = maxHealth;

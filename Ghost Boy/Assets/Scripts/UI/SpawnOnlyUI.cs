@@ -39,6 +39,7 @@ public class SpawnOnlyUI : UISubject
     public Checkpoint cp2;
     public Guidance0Trigger G0T;
     public PlayerAttack PA;
+    public GameObject fallDetector; 
 
     void Start()
     {
@@ -64,6 +65,7 @@ public class SpawnOnlyUI : UISubject
     {
         if (menu.startActivated)
         {
+            fallDetector.SetActive(true);
             AS.Play(); 
             storyTextPF.FadeOut();
             fullScreenPF.FadeOut();

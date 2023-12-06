@@ -6,33 +6,24 @@ using TMPro;
 
 public class SceneManagement : UISubject
 {
-    public static SceneManagement Instance { get; set; }
     int Scene_index;
     [Tooltip("the level display")]
-    public TextMeshProUGUI LevelText;
-    [SerializeField] string levelName;
-
-    public void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this; 
-        }
-
-        DontDestroyOnLoad(gameObject); 
-    }
+    TextMeshProUGUI LevelText;
+    string levelName;
+    Scene currentScene;
+    public GameObject wakeUpScreen;
+    Animator wakeUpScreenAnim;
 
     public void Start()
     {
-        levelName = SceneManager.GetActiveScene().name;
+        currentScene = SceneManager.GetActiveScene();
+        Scene_index = currentScene.buildIndex;
+        levelName = currentScene.name;
         if (LevelText != null)
         {
             LevelText.text = "<< " + levelName + " >>";
         }
+        wakeUpScreenAnim = wakeUpScreen.GetComponent<Animator>();
     }
 
     private void SetLevelName(int Scene_index, string LevelName)
@@ -47,7 +38,7 @@ public class SceneManagement : UISubject
     {
         NotifyObservers(PlayerActions.FadeIn);
         yield return new WaitForSeconds(1.25f);
-        PermanentUIManager.Instance.OnLoadNewScene();
+        OnLoadNewScene();
         yield return new WaitForSeconds(1.25f);
         Scene_index = SceneManager.GetActiveScene().buildIndex - 1;
         SceneManager.LoadSceneAsync(Scene_index);
@@ -62,7 +53,7 @@ public class SceneManagement : UISubject
     {
         NotifyObservers(PlayerActions.FadeIn);
         yield return new WaitForSeconds(1.25f);
-        PermanentUIManager.Instance.OnLoadNewScene();
+        OnLoadNewScene();
         yield return new WaitForSeconds(1.25f);
         Scene_index = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadSceneAsync(Scene_index);
@@ -71,5 +62,38 @@ public class SceneManagement : UISubject
         SetLevelName(Scene_index, levelName);
         NotifyObservers(PlayerActions.NewLevel);
         yield return null; 
+    }
+    bool isScene_CurrentlyLoaded(string sceneName)
+    {
+        for (int i = 0; i < SceneManager.sceneCount; ++i)
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+            if (scene != currentScene)
+            {
+                //the scene is already loaded
+                return true;
+            }
+        }
+        return false;//scene not currently loaded in the hierarchy
+    }
+
+    void Update()
+    {
+        if (isScene_CurrentlyLoaded("Spawn"))
+        {
+            wakeUpScreenAnim.SetTrigger("WakeUp");
+            currentScene = SceneManager.GetActiveScene();
+            Scene_index = currentScene.buildIndex;
+        }
+
+        if (Input.GetKey(KeyCode.P) && Input.GetKey(KeyCode.O))
+        {
+            StartCoroutine(Next_Scene());
+        }
+    }
+
+    public void OnLoadNewScene()
+    {
+        wakeUpScreenAnim.SetTrigger("LoadingNewScene");
     }
 }

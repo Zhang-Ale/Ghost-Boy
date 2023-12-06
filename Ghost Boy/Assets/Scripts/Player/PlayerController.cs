@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public float movementForceInAir;
     public float airDragMultiplier = 0.95f;
     public float variableJumpHeightMultiplier = 0.5f;
-
+    private Camera MainCamera;
     public Transform groundCheck;
     public Transform wallCheck;
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     private float dashTimeLeft;
     private float lastImageXpos;
     private float lastDash = -100f;
-
+    public SceneManagement SM; 
     public GreenBin GB;
     private bool canShortJump = false;
     public DialogueTwoImage D2Image;
@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         slider.value = 0f;
         canShortJump = false;
         canLongJump = false;
+        MainCamera = Camera.main;
     }
 
     void Update()
@@ -80,6 +81,8 @@ public class PlayerController : MonoBehaviour
         UpdateAnimations();
         CheckIfCanJump();
         CheckDash();
+        var screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-5f, 0f, 0f);
+        slider.transform.position = screenPos;
     }
 
     private void FixedUpdate()
@@ -347,13 +350,13 @@ public class PlayerController : MonoBehaviour
 
         if (collision.tag == "LoadPreviousLevel")
         {
-            StartCoroutine(SceneManagement.Instance.Previous_Scene());
+            StartCoroutine(SM.Previous_Scene());
         }
 
         if (collision.tag == "LoadNextLevel")
         {
 
-            StartCoroutine(SceneManagement.Instance.Next_Scene());
+            StartCoroutine(SM.Next_Scene());
         }
     }
 }

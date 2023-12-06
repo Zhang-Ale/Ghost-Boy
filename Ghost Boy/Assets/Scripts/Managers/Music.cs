@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Music : MonoBehaviour
+public class Music : Singleton<Music>
 {
     public AudioSource _music;
     public AudioClip backgroundMusic;
@@ -11,12 +11,17 @@ public class Music : MonoBehaviour
     bool playBack = false;
     bool playBattle = false;
     public MenuActs MA;
+    public bool playBackMusic;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(this);
+    }
 
     void Start()
     {
-        _music = GetComponent<AudioSource>();
         Feelie = GameObject.Find("Feelie_enemy").GetComponent<Feelie_Behaviour>();
-        //Feelie = GameObject.Find("Feelie").GetComponent<MeleeEnemy>();
         _music.clip = backgroundMusic;
         _music.Play();
         playBack = true;
@@ -34,6 +39,7 @@ public class Music : MonoBehaviour
             playBack = false;
             if (!playBattle)
             {
+                playBackMusic = false; 
                 StartCoroutine(PlayBattleMusic());
                 playBattle = false;
             }
@@ -43,9 +49,18 @@ public class Music : MonoBehaviour
             playBattle = false;
             if (!playBack)
             {
-                StartCoroutine(PlayBackMusic());
+                playBackMusic = true; 
                 playBack = false;
             }
+        }
+
+        if (playBackMusic)
+        {
+            StartCoroutine(PlayBackMusic());
+        }
+        else
+        {
+            StopCoroutine(PlayBackMusic());
         }
     }
 
