@@ -8,19 +8,24 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     public float attackRange = 1f;
     public LayerMask enemyLayers;
-    public int attackDamage = 10;
     public float attackRate = 1.5f;
     float nextAttackTime = 0f;
     public bool canAttack;
+    private CharacterStats characterStats;
+    private void Awake()
+    {
+        characterStats = transform.GetComponentInParent<CharacterStats>();
+    }
 
     private void Start()
     {
+        characterStats.AttackDamage = 5;
         canAttack = false;
     }
 
     void Update()
     {
-        if(Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime)
         {
             if (Input.GetMouseButtonDown(0) && canAttack)
             {
@@ -38,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (enemy.GetComponent<Feelie_Behaviour>() == true)
             {
-                enemy.GetComponent<Feelie_Behaviour>().TakeDamage(attackDamage);
+                enemy.GetComponent<Feelie_Behaviour>().TakeDamage(characterStats.AttackDamage);
             }
 
             if (enemy.GetComponent<TriggerRocks>() == true)
@@ -50,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
                 Enemy _enemy = enemy.gameObject.GetComponent<Enemy>();
                 if (_enemy != null && _enemy.damageType == DamageTypes.rock)
                 {
-                    _enemy.TakeDamage(10);
+                    _enemy.TakeDamage(characterStats.AttackDamage);
                 }
             }
         }

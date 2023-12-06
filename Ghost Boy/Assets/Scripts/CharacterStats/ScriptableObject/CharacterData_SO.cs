@@ -12,13 +12,10 @@ public class CharacterData_SO : ScriptableObject
     public int curHealth;
     public int level;
     public int attackDamage; 
-    public int ultimateCharge; 
-
-    /*void Start()
-    {
-        curCharacter = Characters.Benjamin;
-    }*/
+    public int maxUltCharge;
+    public int curUltCharge; 
 }
+
 public enum Characters
 {
     Benjamin, 

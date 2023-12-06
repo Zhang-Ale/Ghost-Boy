@@ -65,7 +65,10 @@ public class Feelie_Behaviour : Enemy
     void FixedUpdate()
     {
         HealthBar.SetHealth(currentHealth, maxHealth);
-        playerDistance = Vector2.Distance(transform.position, player.position);
+        if(player!= null)
+        {
+            playerDistance = Vector2.Distance(transform.position, player.position);
+        }
         if (!FeelieIsDamaged && !attackMode)
         {
             Move();

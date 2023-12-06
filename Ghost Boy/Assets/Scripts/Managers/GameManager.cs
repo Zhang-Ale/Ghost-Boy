@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public PlayerInstance playerInstance; 
+    public CharacterStats playerInstance; 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
     }
 
-    public void RegisterPlayer(PlayerInstance player)
+    public void RegisterPlayer(CharacterStats player)
     {
         playerInstance = player; 
     }

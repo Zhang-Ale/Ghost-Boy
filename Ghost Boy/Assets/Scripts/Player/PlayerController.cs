@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("MOVEMENT")]
     private float movementInputDirection;
 
     private int amountOfJumpsLeft;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public int amountOfJumps = 1;
     public Vector3 respawnPoint;
     public GameObject fallDetector;
-
+    private CharacterStats characterStats; 
     public float movementSpeed = 10.0f;
     public float jumpForce = 16.0f;
     public float groundCheckRadius;
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        characterStats = transform.GetComponentInParent<CharacterStats>(); 
         respawnPoint = transform.position;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviour
         UpdateAnimations();
         CheckIfCanJump();
         CheckDash();
-        var screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-5f, 0f, 0f);
+        var screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-50f, 0f, 0f);
         slider.transform.position = screenPos;
     }
 
@@ -246,8 +248,6 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
-            //anim.SetBool("Jumping", false);
-            //anim.SetBool("Grounded", false);
             rb.velocity = new Vector2(movementSpeed * movementInputDirection, rb.velocity.y);
         }
         else if(!isGrounded && movementInputDirection != 0)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInstance : Singleton <PlayerInstance>
 {
-    //CharacterStats characterStats;
+    CharacterStats characterStats;
     protected override void Awake()
     {
         base.Awake();
@@ -13,7 +13,6 @@ public class PlayerInstance : Singleton <PlayerInstance>
 
     private void Start()
     {
-        //characterStats = GetComponent<CharacterStats>();
-        //GameManager.Instance.RegisterPlayer(characterStats); 
+        characterStats = GetComponent<CharacterStats>();
     }
 }

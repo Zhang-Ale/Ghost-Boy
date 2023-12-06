@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int curHealth = 0;
-    public int maxHealth = 100;
-    [SerializeField] Slider healthBar;
-
+    private CharacterStats characterStats; 
     public PlayerController PC;
     public int blinks;
     public float flashTime;
@@ -18,20 +15,30 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     GameObject regenerationHP;
     public Transform regenerationPos;
+    Slider healthBar;
+
+    private void Awake()
+    {
+        characterStats = transform.GetComponentInParent<CharacterStats>();
+    }
 
     void Start()
     {
-        if(healthBar == null)
+        characterStats.MaxHealth = 1000;
+        characterStats.CurHealth = 1000;
+        if (healthBar == null)
         {
             healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
-            healthBar.maxValue = maxHealth;
-            healthBar.value = curHealth;
+            healthBar.maxValue = characterStats.MaxHealth;
+            healthBar.value = characterStats.CurHealth;
         }     
         sr = GetComponent<SpriteRenderer>();
     }
 
     public void Update()
     {
+        healthBar.maxValue = characterStats.MaxHealth;
+        healthBar.value = characterStats.CurHealth;
         Death();
     }
 
@@ -44,8 +51,8 @@ public class PlayerHealth : MonoBehaviour
     {
         sf.FlashScreen();
 
-        curHealth -= damage;
-        SetHealth(curHealth);
+        characterStats.CurHealth -= damage;
+        SetHealth(characterStats.CurHealth);
 
         BlinkPlayer(blinks, flashTime);
         shake.StartCoroutine("DamagedShaking");
@@ -69,7 +76,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Death()
     {        
-        if (curHealth == 0 || curHealth <= 0)
+        if (characterStats.CurHealth == 0 || characterStats.CurHealth <= 0)
         {
             if (0 == 0)
             {
@@ -80,7 +87,7 @@ public class PlayerHealth : MonoBehaviour
     public void Respawn()
     {
         transform.position=PC.respawnPoint;
-        curHealth = maxHealth;
+        characterStats.CurHealth = characterStats.MaxHealth;
         SetHealth(100); 
         RegenerationEffect();
     }
