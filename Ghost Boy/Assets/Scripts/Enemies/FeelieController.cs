@@ -19,6 +19,11 @@ public class FeelieController : MonoBehaviour
 
     void SwitchStates()
     {
+        if (inRange())
+        {
+            enemyStates = EnemyStates.CHASE;
+        }
+
         switch (enemyStates)
         {
             case EnemyStates.GUARD:
@@ -30,5 +35,11 @@ public class FeelieController : MonoBehaviour
             case EnemyStates.DEAD:
                 break;
         }
+    }
+
+    bool inRange()
+    {
+        return true; 
+        //return false;
     }
 }

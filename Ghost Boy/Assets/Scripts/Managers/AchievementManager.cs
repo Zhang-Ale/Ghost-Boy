@@ -9,6 +9,11 @@ public class AchievementManager : Singleton<AchievementManager>, IObserver
     protected override void Awake()
     {
         base.Awake();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(this);
     }
 

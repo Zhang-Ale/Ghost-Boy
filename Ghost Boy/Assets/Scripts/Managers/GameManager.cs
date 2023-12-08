@@ -20,6 +20,11 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(this);
     }
 
@@ -57,7 +62,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Q) && Input.GetKeyDown(KeyCode.O))
         {
-            SceneManager.LoadScene("Spawn");
+            StartCoroutine(Previous_Scene());
         }
 
         Scene currentScene = SceneManager.GetActiveScene();

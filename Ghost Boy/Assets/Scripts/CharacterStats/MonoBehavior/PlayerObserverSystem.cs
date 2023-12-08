@@ -47,7 +47,7 @@ public class PlayerObserverSystem : MonoBehaviour, IObserver
                 return;
 
             case (PlayerActions.NewLevel):
-                Light2D globLight = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>(); 
+                //check if there's only 1 global light 2d
                 CanvasGroup ltCanvGroup = levelText.GetComponent<CanvasGroup>();
                 StartCoroutine(ActionOne(ltCanvGroup, ltCanvGroup.alpha, mFaded ? 0 : 1));
                 bpCanvGroup = fullScreenPanel.GetComponent<CanvasGroup>();

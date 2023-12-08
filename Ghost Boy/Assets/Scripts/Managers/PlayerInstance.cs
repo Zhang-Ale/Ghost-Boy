@@ -8,6 +8,11 @@ public class PlayerInstance : Singleton <PlayerInstance>
     protected override void Awake()
     {
         base.Awake();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(this);
     }
 
