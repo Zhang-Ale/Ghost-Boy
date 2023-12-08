@@ -50,7 +50,7 @@ public class GreenBin : MonoBehaviour
                 Instruction.SetActive(true);
                 GameObject instructText = Instruction.transform.GetChild(1).gameObject;
                 TextMeshProUGUI _Text = instructText.GetComponent<TextMeshProUGUI>();
-                _Text.text = "Press Space to jump";
+                _Text.text = "Press W to jump";
                 StartCoroutine(CloseInstruction());
             }
         }

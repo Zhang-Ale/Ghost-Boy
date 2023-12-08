@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
     public float airDragMultiplier = 0.95f;
     public float variableJumpHeightMultiplier = 0.5f;
     private Camera MainCamera;
-    public Transform groundCheck;
-    public Transform wallCheck;
+    Transform groundCheck;
+    Transform wallCheck;
 
     public LayerMask whatIsGround;
 
@@ -51,17 +51,8 @@ public class PlayerController : MonoBehaviour
     private float dashTimeLeft;
     private float lastImageXpos;
     private float lastDash = -100f;
-    public SceneManagement SM; 
-    public GreenBin GB;
-    private bool canShortJump = false;
+    public GreenBin GB; 
     public DialogueTwoImage D2Image;
-    private bool canLongJump = false;
-
-    [Header("DIALOGUES")]
-    public GameObject Interactable1;
-    public GameObject Dialogue1;
-    public GameObject Interactable2;
-    public GameObject Dialogue2;
 
     void Start()
     {
@@ -69,10 +60,10 @@ public class PlayerController : MonoBehaviour
         respawnPoint = transform.position;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        groundCheck = transform.GetChild(1).transform;
+        wallCheck = transform.GetChild(2).transform;
         amountOfJumpsLeft = amountOfJumps;
         slider.value = 0f;
-        canShortJump = false;
-        canLongJump = false;
         MainCamera = Camera.main;
     }
 
@@ -151,28 +142,28 @@ public class PlayerController : MonoBehaviour
     private void CheckInput()
     {
         movementInputDirection = Input.GetAxisRaw("Horizontal");
-        
-        if (GB != null && GB._stopActivate)
+
+        if (!GameManager.Instance.notSpawn) 
         {
-            canShortJump = true;
-        }
-        if (canShortJump)
-        {
-            if (isGrounded == true && Input.GetKeyUp(KeyCode.Space))
+            if (GB._stopActivate)
             {
-                rb.velocity = Vector2.up * jumpForce;
-                //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);
+                GB.enabled = false;
+                if (isGrounded == true && Input.GetKeyDown(KeyCode.W))
+                {
+                    rb.velocity = Vector2.up * jumpForce;
+                    //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);  
+                }
+            }
+
+            if (D2Image._stopActivate)
+            {
+                Jump();
+                D2Image.enabled = false; 
             }
         }
-
-        if (D2Image!= null && D2Image._stopActivate)
+        else
         {
-            canShortJump = false;
-            canLongJump = true;
-        }
-        if (canLongJump)
-        {
-            Jump();
+            Jump(); 
         }
 
         if (Input.GetButtonDown("Dash"))
@@ -183,12 +174,16 @@ public class PlayerController : MonoBehaviour
             }  
         }
 
-        //fallDetector following the player at x
         fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y);
     }
 
     private void Jump()
     {
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.W))
+        {
+            rb.velocity = Vector2.up * jumpForce;
+        }
+
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             slider.value = 0f;
@@ -310,19 +305,12 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
     private void Flip()
     {
         facingDirection *= -1;
         isFacingRight = !isFacingRight;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
-        
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
-
-        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
+        transform.Rotate(0.0f, 180.0f, 0.0f);      
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -336,27 +324,5 @@ public class PlayerController : MonoBehaviour
             respawnPoint = transform.position;
         }
 
-        if(collision.gameObject == Interactable1)
-        {
-            Dialogue1.SetActive(true);
-            Dialogue2.SetActive(false);
-        }
-
-        if (collision.gameObject == Interactable2)
-        {
-            Dialogue2.SetActive(true);
-            Dialogue1.SetActive(false);
-        }
-
-        if (collision.tag == "LoadPreviousLevel")
-        {
-            StartCoroutine(SM.Previous_Scene());
-        }
-
-        if (collision.tag == "LoadNextLevel")
-        {
-
-            StartCoroutine(SM.Next_Scene());
-        }
     }
 }

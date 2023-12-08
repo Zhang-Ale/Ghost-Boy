@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterMove Controller;
+    public PlayerController Controller;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool crouch = false;
@@ -32,6 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, crouch);
+        //Controller.Move(horizontalMove * runSpeed * Time.fixedDeltaTime, crouch);
     }
 }

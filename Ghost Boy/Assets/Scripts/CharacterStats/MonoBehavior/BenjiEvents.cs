@@ -21,14 +21,20 @@ public class BenjiEvents : MonoBehaviour
     public SpriteRenderer[] spawnBack;
     public float fadeOutTime = 1f;
     public float fadeInTime = 1f;
-    public PlayerController PC;
+    PlayerController PC;
     public bool falling = false;
-    
+    [Header("DIALOGUES")]
+    public GameObject Interactable1;
+    public GameObject Dialogue1;
+    public GameObject Interactable2;
+    public GameObject Dialogue2;
+    public SceneManagement SM;
+
     void Start()
     {
         myLight.intensity = 0;
         leaveButtonOn = false;
-
+        PC = gameObject.GetComponent<PlayerController>(); 
         /*GameObject[] _spawn = GameObject.FindGameObjectsWithTag("SBF");
         for (int i = 0; i < _spawn.Length; i++)
         {
@@ -59,6 +65,29 @@ public class BenjiEvents : MonoBehaviour
         else
         {
             leaveButtonOn = false;
+        }
+
+        if (collision.gameObject == Interactable1)
+        {
+            Dialogue1.SetActive(true);
+            Dialogue2.SetActive(false);
+        }
+
+        if (collision.gameObject == Interactable2)
+        {
+            Dialogue2.SetActive(true);
+            Dialogue1.SetActive(false);
+        }
+
+        if (collision.tag == "LoadPreviousLevel")
+        {
+            StartCoroutine(SM.Previous_Scene());
+        }
+
+        if (collision.tag == "LoadNextLevel")
+        {
+
+            StartCoroutine(SM.Next_Scene());
         }
     }
         /*if (collision.gameObject.name == "SpawnLocation")

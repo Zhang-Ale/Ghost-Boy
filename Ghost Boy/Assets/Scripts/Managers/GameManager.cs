@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public CharacterStats playerInstance; 
+    public CharacterStats playerInstance;
+    public bool notSpawn; 
     protected override void Awake()
     {
         base.Awake();
@@ -26,6 +27,16 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.O))
         {
             SceneManager.LoadScene("Spawn");
+        }
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        if(currentScene.name != "Spawn")
+        {
+            notSpawn = true; 
+        }
+        else
+        {
+            notSpawn = false; 
         }
     }
 
