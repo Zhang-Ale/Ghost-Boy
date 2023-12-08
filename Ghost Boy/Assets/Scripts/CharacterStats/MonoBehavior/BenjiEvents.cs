@@ -28,7 +28,8 @@ public class BenjiEvents : MonoBehaviour
     public GameObject Dialogue1;
     public GameObject Interactable2;
     public GameObject Dialogue2;
-    public SceneManagement SM;
+    GreenBin GB;
+    DialogueTwoImage D2Image;
 
     void Start()
     {
@@ -43,7 +44,11 @@ public class BenjiEvents : MonoBehaviour
 
         desertFade = false;
         spawnFade = true;
+
+        GB = GameObject.Find("_green bin").GetComponent<GreenBin>();
+        D2Image = Dialogue2.GetComponent<DialogueTwoImage>(); 
     }
+
     private void Update()
     {
         if (leaveButtonOn)
@@ -53,6 +58,23 @@ public class BenjiEvents : MonoBehaviour
         else
         {
             leaveBut.SetActive(false);
+        }
+
+        if (!GameManager.Instance.notSpawn)
+        {
+            if (GB._stopActivate)
+            {
+                PC.canShortJump = true; 
+            }
+
+            if (D2Image._stopActivate)
+            {
+                PC.canLongJump = true; 
+            }
+        }
+        else
+        {
+            //add something for player when the active scene != "Spawn"
         }
     }
 
@@ -81,13 +103,13 @@ public class BenjiEvents : MonoBehaviour
 
         if (collision.tag == "LoadPreviousLevel")
         {
-            StartCoroutine(SM.Previous_Scene());
+            StartCoroutine(GameManager.Instance.Previous_Scene());
         }
 
         if (collision.tag == "LoadNextLevel")
         {
 
-            StartCoroutine(SM.Next_Scene());
+            StartCoroutine(GameManager.Instance.Next_Scene());
         }
     }
         /*if (collision.gameObject.name == "SpawnLocation")

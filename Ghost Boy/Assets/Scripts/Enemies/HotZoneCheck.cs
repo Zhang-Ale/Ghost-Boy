@@ -12,13 +12,11 @@ public class HotZoneCheck : MonoBehaviour
     public Vector3 normalOffset;
     public bool showGuide = false;
 
-
     private void Awake()
     {
         FeelieParent = GetComponentInParent<Feelie_Behaviour>();
         anim = GetComponentInParent<Animator>();
         text.SetActive(false);
-
     }
 
     private void FixedUpdate()
@@ -49,7 +47,6 @@ public class HotZoneCheck : MonoBehaviour
         {
             inRange = true;
             showGuide = true;
-
         }
     }
 
@@ -63,7 +60,7 @@ public class HotZoneCheck : MonoBehaviour
             this.gameObject.SetActive(false);
             FeelieParent.triggerArea.SetActive(true);
             FeelieParent.inRange = false;
-            FeelieParent.SelectTarget();
+            FeelieParent.SelectTheTarget();
         }
     }
 }

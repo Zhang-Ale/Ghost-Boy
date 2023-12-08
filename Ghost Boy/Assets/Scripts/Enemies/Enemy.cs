@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum DamageTypes
 {
-    ghost,
+    Feelie,
     wall, 
     rock
 }

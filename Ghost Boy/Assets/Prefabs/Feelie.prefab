@@ -259,6 +259,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8076097931469099785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +308,6 @@ GameObject:
   - component: {fileID: 8076097931764979445}
   - component: {fileID: 8076097931764979446}
   - component: {fileID: 8076097931764979447}
-  - component: {fileID: 8076097931764979450}
   m_Layer: 9
   m_Name: Feelie_enemy
   m_TagString: Enemy
@@ -437,6 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e74f8fdc7c93fc438bba994bb93ae19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageType: 0
+  _life: 10
   attackDistance: 2.5
   moveSpeed: 1
   timer: 1
@@ -445,6 +447,7 @@ MonoBehaviour:
   leftLimit: {fileID: 8076097931231086922}
   rightLimit: {fileID: 8076097932080204137}
   target: {fileID: 0}
+  playerDistance: 0
   hotZone: {fileID: 8076097932247288107}
   triggerArea: {fileID: 8076097931109192547}
   maxHealth: 100
@@ -460,7 +463,6 @@ MonoBehaviour:
   HealthBar: {fileID: 8076097931469099790}
   flipped: 0
   bloodEffect: {fileID: 2371392107485273096, guid: 6c9a3cd43a55b0247b81412cd4c064ac, type: 3}
-  playerDistance: 0
   attackMode: 0
   FeelieIsDamaged: 0
   playerIsDamaged: 0
@@ -480,22 +482,6 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.8694382, y: 2.0780492}
   m_Size: {x: 3.9100494, y: 3.9100494}
-  m_Direction: 0
---- !u!70 &8076097931764979450
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8076097931764979441}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.8179016, y: 2.078049}
-  m_Size: {x: 1.8812866, y: 3.443902}
   m_Direction: 0
 --- !u!1 &8076097931918751007
 GameObject:
@@ -686,7 +672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8076097932319943570
 RectTransform:
   m_ObjectHideFlags: 0
@@ -722,6 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 0
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -925,7 +912,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1035,7 +1022,7 @@ GameObject:
   - component: {fileID: 8076097933117681971}
   - component: {fileID: 8076097933117681970}
   - component: {fileID: 8076097933117681969}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeelieLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

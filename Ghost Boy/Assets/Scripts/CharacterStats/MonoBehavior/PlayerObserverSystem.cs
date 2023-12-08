@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerObserverSystem : MonoBehaviour, IObserver
 {
@@ -46,6 +47,7 @@ public class PlayerObserverSystem : MonoBehaviour, IObserver
                 return;
 
             case (PlayerActions.NewLevel):
+                Light2D globLight = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>(); 
                 CanvasGroup ltCanvGroup = levelText.GetComponent<CanvasGroup>();
                 StartCoroutine(ActionOne(ltCanvGroup, ltCanvGroup.alpha, mFaded ? 0 : 1));
                 bpCanvGroup = fullScreenPanel.GetComponent<CanvasGroup>();

@@ -51,8 +51,8 @@ public class PlayerController : MonoBehaviour
     private float dashTimeLeft;
     private float lastImageXpos;
     private float lastDash = -100f;
-    public GreenBin GB; 
-    public DialogueTwoImage D2Image;
+    public bool canShortJump;
+    public bool canLongJump; 
 
     void Start()
     {
@@ -105,8 +105,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             canJump = true;
-        }
-      
+        }     
     }
 
     private void CheckMovementDirection()
@@ -143,27 +142,18 @@ public class PlayerController : MonoBehaviour
     {
         movementInputDirection = Input.GetAxisRaw("Horizontal");
 
-        if (!GameManager.Instance.notSpawn) 
+        if (canShortJump)
         {
-            if (GB._stopActivate)
+            if (isGrounded == true && Input.GetKeyDown(KeyCode.W))
             {
-                GB.enabled = false;
-                if (isGrounded == true && Input.GetKeyDown(KeyCode.W))
-                {
-                    rb.velocity = Vector2.up * jumpForce;
-                    //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);  
-                }
-            }
-
-            if (D2Image._stopActivate)
-            {
-                Jump();
-                D2Image.enabled = false; 
+                rb.velocity = Vector2.up * jumpForce;
+                //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);  
             }
         }
-        else
+
+        if (canLongJump)
         {
-            Jump(); 
+            Jump();
         }
 
         if (Input.GetButtonDown("Dash"))
@@ -179,11 +169,6 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded == true && Input.GetKeyDown(KeyCode.W))
-        {
-            rb.velocity = Vector2.up * jumpForce;
-        }
-
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             slider.value = 0f;

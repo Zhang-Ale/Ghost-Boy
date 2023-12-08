@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement; 
 using TMPro;
 
-public class SpawnOnlyUI : UISubject
+public class SpawnOnlyUI : MonoBehaviour
 {
     [Header("GameStartUI")]
     public MenuActs menu;

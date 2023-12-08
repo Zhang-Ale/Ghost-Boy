@@ -45,21 +45,21 @@ public class Feelie_Behaviour : Enemy
     [SerializeField]
     private bool cooling; //check is this is cooling after attack
     private float intTimer;
-    private Music music;
+    Music music;
     #endregion
 
     private void Awake()
     {
-        SelectTarget();
+        SelectTheTarget();
         intTimer = timer; //to store the initial value of timer
         anim = GetComponent<Animator>();
         SR = GetComponent<SpriteRenderer>();
         originalColor = SR.color;
         currentHealth = maxHealth;
-        music = GameObject.Find("Main Camera").GetComponent<Music>();
+        music = GameObject.Find("AudioManager").GetComponent<Music>();
         HealthBar.SetHealth(currentHealth, maxHealth);
         flipped = false;
-        damageType = DamageTypes.ghost;
+        damageType = DamageTypes.Feelie;
     }
 
     void FixedUpdate()
@@ -84,7 +84,7 @@ public class Feelie_Behaviour : Enemy
 
         if (!InsideofLimits() && !inRange && !anim.GetCurrentAnimatorStateInfo(0).IsName("Feelie_attack"))
         {
-            SelectTarget();
+            SelectTheTarget();
         }
 
         if (inRange && !cooling)
@@ -158,10 +158,10 @@ public class Feelie_Behaviour : Enemy
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         Destroy(this.gameObject, 2f);
-        if(BackMusic != null)
-        {
-            music.ChangeBGM(BackMusic);
-        }       
+       // if(BackMusic != null)
+       // {
+       //     music.ChangeBGM(BackMusic);
+       // }       
     }
 
     IEnumerator EnemyLogic()
@@ -245,7 +245,7 @@ public class Feelie_Behaviour : Enemy
         return transform.position.x > leftLimit.position.x && transform.position.x < rightLimit.position.x;
     }
 
-    public void SelectTarget()
+    public void SelectTheTarget()
     {
         float distanceToLeft = Vector3.Distance(transform.position, leftLimit.position);
         float distanceToRight = Vector3.Distance(transform.position, rightLimit.position);

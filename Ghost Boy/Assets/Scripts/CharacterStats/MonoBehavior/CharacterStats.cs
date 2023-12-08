@@ -6,7 +6,7 @@ public class CharacterStats : Singleton<PlayerInstance>
 {
     public CharacterData_SO characterData;
 
-    #region region: Read from Data_SO
+    #region Read from Data_SO
 
     protected override void Awake()
     {
@@ -34,10 +34,30 @@ public class CharacterStats : Singleton<PlayerInstance>
         get { if (characterData != null) return characterData.curCharacter; else return 0; }
         set { characterData.curCharacter = value; }
     }
-    public int Level
+    public int CurrentLevel
     {
-        get { if (characterData != null) return characterData.level; else return 0; }
-        set { characterData.level = value; }
+        get { if (characterData != null) return characterData.curLevel; else return 0; }
+        set { characterData.curLevel = value; }
+    }
+    public int MaxLevel
+    {
+        get { if (characterData != null) return characterData.maxLevel; else return 0; }
+        set { characterData.maxLevel = value; }
+    }
+    public int BaseXp
+    {
+        get { if (characterData != null) return characterData.baseExp; else return 0; }
+        set { characterData.baseExp = value; }
+    }
+    public int CurrentXp
+    {
+        get { if (characterData != null) return characterData.curExp; else return 0; }
+        set { characterData.curExp = value; }
+    }
+    public float LevelBuff
+    {
+        get { if (characterData != null) return characterData.levelBuff; else return 0; }
+        set { characterData.levelBuff = value; }
     }
     public int AttackDamage
     {
@@ -53,6 +73,13 @@ public class CharacterStats : Singleton<PlayerInstance>
     {
         get { if (characterData != null) return characterData.curUltCharge; else return 0; }
         set { characterData.curUltCharge = value; }
+    }
+    #endregion
+    #region Character Combat
+
+    public void TakeDamage()
+    {
+
     }
     #endregion
 }
