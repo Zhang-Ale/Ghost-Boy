@@ -5126,14 +5126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab4ae23c0fa7b9498377bb843a56cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  runSpeed: 40
-  animator: {fileID: 1313626594}
---- !u!95 &1313626594 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 710194478565786021, guid: 9ffe7518bd1db9a4baf3940fb1e6fa1c, type: 3}
-  m_PrefabInstance: {fileID: 987317076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1317665942
 GameObject:
   m_ObjectHideFlags: 0

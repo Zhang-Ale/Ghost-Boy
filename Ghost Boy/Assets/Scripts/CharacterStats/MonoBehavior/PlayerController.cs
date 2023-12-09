@@ -52,7 +52,8 @@ public class PlayerController : MonoBehaviour
     private float lastImageXpos;
     private float lastDash = -100f;
     public bool canShortJump;
-    public bool canLongJump; 
+    public bool canLongJump;
+    public Shockwave shockwave; 
 
     void Start()
     {
@@ -76,6 +77,11 @@ public class PlayerController : MonoBehaviour
         CheckDash();
         var screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-50f, 0f, 0f);
         slider.transform.position = screenPos;
+        //Ask Professor
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            shockwave.CallShockwave();
+        }
     }
 
     private void FixedUpdate()

@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     Scene currentScene;
     public GameObject wakeUpScreen;
     Animator wakeUpScreenAnim;
-
+    GameObject[] foreGroundObjects; 
     protected override void Awake()
     {
         base.Awake();
@@ -38,6 +38,11 @@ public class GameManager : Singleton<GameManager>
             LevelText.text = "<< " + levelName + " >>";
         }
         wakeUpScreenAnim = wakeUpScreen.GetComponent<Animator>();
+        foreGroundObjects = GameObject.FindGameObjectsWithTag("Foreground");
+        for(int i = 0; i < foreGroundObjects.Length; i++)
+        {
+            foreGroundObjects[i].AddComponent<OcclusionTrigger>();  
+        }
     }
 
     private void SetLevelName(int Scene_index, string LevelName)
