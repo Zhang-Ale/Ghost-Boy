@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool flipped = false;
 
     private Rigidbody2D rb;
-    private Animator anim;
+    public Animator anim;
 
     private bool isJumping;
     public float holdTime;
@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour
         characterStats = transform.GetComponentInParent<CharacterStats>(); 
         respawnPoint = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
         groundCheck = transform.GetChild(1).transform;
         wallCheck = transform.GetChild(2).transform;
         amountOfJumpsLeft = amountOfJumps;

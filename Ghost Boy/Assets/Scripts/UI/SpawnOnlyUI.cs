@@ -18,7 +18,7 @@ public class SpawnOnlyUI : MonoBehaviour
     bool storyDisplaying; 
     public GameObject ContinueButton;
     public GameObject player;
-    public Light2D benjiLight;
+    public Light2D playerLight;
     public Light2D firstLight;
     float progress = 0;
     AudioSource AS; 
@@ -75,10 +75,10 @@ public class SpawnOnlyUI : MonoBehaviour
             player.SetActive(true);
             CharacterInfoUI.alpha = 1;
             InvokeRepeating("LightsOn", 0.1f, 0.2f);
-            if (benjiLight.intensity == 1f)
+            if (playerLight.intensity == 1f)
             {
                 CancelInvoke();
-                benjiLight.intensity = 1f;
+                playerLight.intensity = 1f;
             }
         }
     }
@@ -86,7 +86,7 @@ public class SpawnOnlyUI : MonoBehaviour
     void LightsOn()
     {
         progress += 0.05f;
-        benjiLight.intensity = Mathf.Lerp(0, 0.8f, progress);
+        playerLight.intensity = Mathf.Lerp(0, 0.8f, progress);
         firstLight.intensity = Mathf.Lerp(0, 1.1f, progress);
     }
 

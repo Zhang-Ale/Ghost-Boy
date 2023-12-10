@@ -24,6 +24,7 @@ TagManager:
   - Guidance
   - LoadPreviousLevel
   - LoadNextLevel
+  - Breakable
   layers:
   - Default
   - TransparentFX

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d298727f24b2a2c49a54ad3f1fa11b68, type: 3}
-  m_Name: Player Data
+  m_Name: Charlie Data
   m_EditorClassIdentifier: 
-  curCharacter: 0
+  curCharacter: 1
   maxHealth: 1000
   curHealth: 1000
   attackDamage: 5

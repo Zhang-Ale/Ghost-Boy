@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.UI;
 
-public class BenjiEvents : MonoBehaviour
+public class PlayerEvents : MonoBehaviour
 {
     public Light2D myLight;
     public bool spawnFade = true;
