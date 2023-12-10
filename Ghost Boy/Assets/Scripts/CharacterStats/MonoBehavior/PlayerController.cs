@@ -5,41 +5,57 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("MOVEMENT")]
+    [Header("Movement")]
     private float movementInputDirection;
+    public float movementSpeed = 10.0f;
+    public float movementForceInAir;
+    public float airDragMultiplier = 0.95f;
+    public float variableJumpHeightMultiplier = 0.5f;
 
+    [Header("Jump")]
     private int amountOfJumpsLeft;
-    [SerializeField] private int facingDirection = 1;
+    private bool isJumping;
+    public float jumpHoldTime;
+    public Slider jumpSlider;
+    public int amountOfJumps = 1;
+    public float jumpForce = 16.0f;
+    public LayerMask whatIsGround;
+    public float groundCheckRadius;
+    public float wallCheckDistance;
+    Transform groundCheck;
+    Transform wallCheck;
+    public bool canShortJump;
+    public bool canLongJump;
 
+    [Header("Fly")]
+    Coroutine staminaDeCo;
+    Coroutine staminaInCo;
+    bool flyingCheck;
+    public int maxFlyStamina;
+    int curFlyStamina;
+    public Slider flySlider;
+    public Vector2 upForce;
+
+    [Header("Checking conditions")]
+    [SerializeField] private int facingDirection = 1;
     private bool isFacingRight = true;
     private bool isWalking;
     public bool isGrounded;
     private bool isTouchingWall;
     private bool canJump;
+    [SerializeField] private bool canFly;
+    public bool isFlying; 
     private bool flipped = false;
 
+    [Header("Attached components")]
     private Rigidbody2D rb;
     public Animator anim;
-
-    private bool isJumping;
-    public float holdTime;
-    public Slider slider;
-    public int amountOfJumps = 1;
     public Vector3 respawnPoint;
     public GameObject fallDetector;
-    private CharacterStats characterStats; 
-    public float movementSpeed = 10.0f;
-    public float jumpForce = 16.0f;
-    public float groundCheckRadius;
-    public float wallCheckDistance;
-    public float movementForceInAir;
-    public float airDragMultiplier = 0.95f;
-    public float variableJumpHeightMultiplier = 0.5f;
+    private CharacterStats characterStats;
     private Camera MainCamera;
-    Transform groundCheck;
-    Transform wallCheck;
-
-    public LayerMask whatIsGround;
+    public Shockwave shockwave;
+    PlayerAttack PA;
 
     [Header("DASH")]
     public float dashSpeed;
@@ -47,23 +63,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool _isDashing;
     public float distanceBetweenImages;
     public float dashCooldown;
-
     private float dashTimeLeft;
     private float lastImageXpos;
     private float lastDash = -100f;
-    public bool canShortJump;
-    public bool canLongJump;
-    public Shockwave shockwave; 
 
     void Start()
     {
+        PA = GetComponent<PlayerAttack>(); 
         characterStats = transform.GetComponentInParent<CharacterStats>(); 
         respawnPoint = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        groundCheck = transform.GetChild(1).transform;
-        wallCheck = transform.GetChild(2).transform;
+        groundCheck = transform.GetChild(0).transform;
+        wallCheck = transform.GetChild(1).transform;
         amountOfJumpsLeft = amountOfJumps;
-        slider.value = 0f;
+        staminaDeCo = StartCoroutine(DecreaseStats(1, 0));
+        staminaInCo = StartCoroutine(IncreaseStats(2, 0));
+        jumpSlider.value = 0f;
+        curFlyStamina = maxFlyStamina; 
+        flySlider.value = curFlyStamina; 
         MainCamera = Camera.main;
     }
 
@@ -71,11 +88,12 @@ public class PlayerController : MonoBehaviour
     {
         CheckInput();
         CheckMovementDirection();
-        UpdateAnimations();
+        UpdateAnimations();      
         CheckIfCanJump();
         CheckDash();
-        var screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-50f, 0f, 0f);
-        slider.transform.position = screenPos;
+        var screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-80f, 0f, 0f);
+        jumpSlider.transform.position = screenPos;
+        flySlider.transform.position = screenPos; 
         //Ask Professor
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -85,6 +103,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckIfCanFly();
         ApplyMovement();
         CheckSurroundings();
     }
@@ -156,9 +175,19 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (canLongJump)
+        if (!PA.isCharlie)
         {
-            Jump();
+            if (canJump && canLongJump)
+            {
+                Jump();
+            }
+        }
+        else
+        {
+            if (canFly)
+            {
+                Fly();
+            }
         }
 
         if (Input.GetButtonDown("Dash"))
@@ -172,11 +201,85 @@ public class PlayerController : MonoBehaviour
         fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y);
     }
 
+    private void CheckIfCanFly()
+    { 
+        if (!isFlying && flyingCheck && staminaDeCo != null)
+        {
+            flyingCheck = false;
+            StopCoroutine(staminaDeCo);
+            staminaInCo = StartCoroutine(IncreaseStats(1, 1));
+        }
+        if (isFlying && !flyingCheck)
+        {
+            flyingCheck = true;
+            staminaDeCo = StartCoroutine(DecreaseStats(1, 2));
+            StopCoroutine(staminaInCo);
+        }
+
+        if(curFlyStamina <= 0)
+        {
+            canFly = false; 
+        }
+        if(curFlyStamina > 0)
+        {
+            canFly = true; 
+        }
+
+        if (isGrounded)
+        {
+            isFlying = false; 
+        }
+    }
+
+    private void Fly()
+    {
+        if(Input.GetKey(KeyCode.Space) && canFly)
+        {
+            anim.SetBool("Flying", true);
+            isFlying = true;
+            flySlider.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
+            //rb.AddForce(upForce);
+            rb.velocity = Vector2.up * 4 + upForce;
+        }
+
+        if(Input.GetKeyUp(KeyCode.Space) && isFlying)
+        {
+            anim.SetBool("Flying", false);
+            isWalking = false; 
+            flySlider.gameObject.GetComponent<CanvasGroup>().alpha = 0f;
+            isFlying = false;
+        }
+    }
+
+    IEnumerator DecreaseStats(int interval, int amount)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(interval);
+            if (flySlider.value >= 0)
+            {
+                flySlider.value = Mathf.Max(flySlider.value - amount, 0);
+            }
+        }
+    }
+
+    IEnumerator IncreaseStats(int interval, int amount)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(interval);
+            if (flySlider.value <= maxFlyStamina - 5)
+            {
+                flySlider.value = Mathf.Max(flySlider.value + amount, 0);
+            }
+        }
+    }
+
     private void Jump()
     {
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space) && canJump)
         {
-            slider.value = 0f;
+            jumpSlider.value = 0f;
             StartCoroutine("StartCounting");
             isJumping = true;
         }
@@ -184,7 +287,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && isJumping == true)
         {
             StopCoroutine("StartCounting");
-            if (holdTime < 0.3f)
+            if (jumpHoldTime < 0.3f)
             {
                 anim.SetBool("Jumping", true);
                 anim.SetBool("Grounded", true);
@@ -194,10 +297,10 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("Jumping", true);
                 anim.SetBool("Grounded", true);
-                rb.velocity = Vector2.up * jumpForce * holdTime * 2.2f;
+                rb.velocity = Vector2.up * jumpForce * jumpHoldTime * 2.2f;
             }
             isJumping = false;
-            slider.value = 0f;
+            jumpSlider.value = 0f;
             amountOfJumpsLeft--;
         }
 
@@ -219,14 +322,14 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator StartCounting()
     {
-        for (holdTime = 0f; holdTime <= 0.75f; holdTime += Time.deltaTime)
+        for (jumpHoldTime = 0f; jumpHoldTime <= 0.75f; jumpHoldTime += Time.deltaTime)
         {
-            slider.value = holdTime;
+            jumpSlider.value = jumpHoldTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        holdTime = 0.75f;
-        slider.value = holdTime;
-        slider.maxValue = 0.75f;
+        jumpHoldTime = 0.75f;
+        jumpSlider.value = jumpHoldTime;
+        jumpSlider.maxValue = 0.75f;
     }
 
     private void ApplyMovement()

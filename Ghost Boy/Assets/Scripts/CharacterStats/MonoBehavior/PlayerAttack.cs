@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine; 
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -23,9 +24,11 @@ public class PlayerAttack : MonoBehaviour
     [Header("Benjamin's")]
     public float attackRange = 1f;
     public RuntimeAnimatorController benjiController;
+    public CircleCollider2D benjiCol; 
 
     [Header("Charlie's")]
     public RuntimeAnimatorController charlieController;
+    public CircleCollider2D charlieCol; 
     public Transform randomAttackPos;
     public GameObject bullet;
     public GameObject bulletPos;
@@ -45,19 +48,30 @@ public class PlayerAttack : MonoBehaviour
     {
         ChecksToDo();
 
+        if (!isCharlie)
+        {
+            animator.runtimeAnimatorController = benjiController;
+            charlieCol.enabled = false;
+            benjiCol.enabled = true;
+        }
+        else
+        {
+            animator.runtimeAnimatorController = charlieController;
+            benjiCol.enabled = false;
+            charlieCol.enabled = true;
+        }
+
         if (Time.time >= nextAttackTime)
         {
             if (Input.GetMouseButtonDown(0) && canAttack)
             {
                 if (!isCharlie)
-                {
-                    animator.runtimeAnimatorController = benjiController;
+                { 
                     BenjaminAttack();
                     nextAttackTime = Time.time + 1f / attackRate;
                 }
                 else
                 {
-                    animator.runtimeAnimatorController = charlieController;
                     if (enemyInRange)
                     {
                         HitBox.transform.position = _enemy.transform.position;

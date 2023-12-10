@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 710194478565786027}
   - component: {fileID: 710194478565786024}
   - component: {fileID: 710194478565786023}
+  - component: {fileID: 6311457290331117028}
   - component: {fileID: 710194478565786016}
   - component: {fileID: 710194478565786019}
   - component: {fileID: 710194478565786018}
@@ -255,6 +256,22 @@ CircleCollider2D:
   m_Offset: {x: 0.066376746, y: -1.3242717}
   serializedVersion: 2
   m_Radius: 0.58052164
+--- !u!58 &6311457290331117028
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710194478565786030}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 9b4d3560a57c7904ab74a2ce3ea5f2f0, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.066376746, y: -1.65}
+  serializedVersion: 2
+  m_Radius: 0.58052164
 --- !u!114 &710194478565786016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,12 +295,14 @@ MonoBehaviour:
   attackRate: 1.2
   canAttack: 1
   enemyInRange: 0
-  enemyCheckCollider: {fileID: 0}
-  attackRange: 1
+  enemyCheckCollider: {fileID: 1956080956}
   isCharlie: 0
-  randomAttackPos: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletPos: {fileID: 0}
+  attackRange: 1
+  benjiController: {fileID: 9100000, guid: cac0d3ad636b9ac4ebb1ab6294785587, type: 2}
+  charlieController: {fileID: 9100000, guid: e32354068bf8344468f04b8440e2a947, type: 2}
+  randomAttackPos: {fileID: 5875630896270532758}
+  bullet: {fileID: 6896626614659488326, guid: 29414dbad8e318641a215ca2decca87e, type: 3}
+  bulletPos: {fileID: 2363554190761354818}
 --- !u!114 &710194478565786019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,9 +387,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingDirection: 1
   isGrounded: 0
+  canFly: 0
+  isFlying: 0
   anim: {fileID: 710194480427917423}
-  holdTime: 0
-  slider: {fileID: 0}
+  jumpHoldTime: 0
+  jumpSlider: {fileID: 0}
   amountOfJumps: 1
   respawnPoint: {x: 0, y: 0, z: 0}
   fallDetector: {fileID: 0}
@@ -381,6 +402,9 @@ MonoBehaviour:
   movementForceInAir: 15
   airDragMultiplier: 0.5
   variableJumpHeightMultiplier: 0.5
+  maxFlyStamina: 10
+  flySlider: {fileID: 0}
+  upForce: {x: 0, y: 5}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 23552
