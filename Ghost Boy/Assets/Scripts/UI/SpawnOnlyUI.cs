@@ -121,7 +121,7 @@ public class SpawnOnlyUI : MonoBehaviour
             Guidance1.SetActive(false);
         }
 
-        if (HZ.showGuide && !clicked)
+        if (HZ.showGuide)
         {
             Guidance1.SetActive(true);
             GameObject guideText = Guidance1.transform.GetChild(1).gameObject;
@@ -129,9 +129,8 @@ public class SpawnOnlyUI : MonoBehaviour
             Text.text = "Press Left Mouse Button to attack";
             if (Input.GetMouseButtonDown(0))
             {
-                clicked = true;
                 Guidance1.SetActive(false);
-                PA = GameObject.Find("Benjamin").GetComponent<PlayerAttack>();
+                PA = GameObject.Find("Player_prefab").GetComponent<PlayerAttack>();
                 PA.canAttack = true; 
             }
         }

@@ -833,7 +833,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11721039, y: 0.0000019073486}
+  m_Offset: {x: 16.05391, y: 0.0000019073486}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -844,7 +844,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 28.217514, y: 1.0531807}
+  m_Size: {x: 60.559753, y: 1.0531807}
   m_EdgeRadius: 0
 --- !u!212 &75842470
 SpriteRenderer:
@@ -1288,7 +1288,6 @@ GameObject:
   - component: {fileID: 127413734}
   - component: {fileID: 127413733}
   - component: {fileID: 127413732}
-  - component: {fileID: 127413735}
   m_Layer: 0
   m_Name: Dialogue3
   m_TagString: Untagged
@@ -1373,7 +1372,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1638794, y: 5.4407787}
+  m_Offset: {x: 0.12568665, y: 5.4407787}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1384,20 +1383,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0319824, y: 13.91354}
+  m_Size: {x: 3.8720703, y: 13.91354}
   m_EdgeRadius: 0
---- !u!114 &127413735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127413730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716efc9dbe2c27a40a2b5d3e7b66ea3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &132480268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8786,12 +8773,12 @@ GameObject:
   - component: {fileID: 427266595}
   - component: {fileID: 427266597}
   m_Layer: 5
-  m_Name: Rend Tex
+  m_Name: Bubble screen effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &427266594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8856,7 +8843,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427266593}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6df3dee5758bf4945bb955e51b226e70, type: 3}
   m_Name: 
@@ -10959,7 +10946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -92.02414, y: -11.190325, z: -10}
+  m_LocalPosition: {x: -73.42413, y: -11.190325, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1277741247}
@@ -13852,7 +13839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691671551}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -92.02414, y: -11.190325, z: -10}
+  m_LocalPosition: {x: -73.42413, y: -11.190325, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450097370}
@@ -19834,6 +19821,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 481022649}
   parallaxEffect: 0.3
+--- !u!1 &775683843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2661390879306556992, guid: 0b92cf4ea634c214795aa8c95970c870, type: 3}
+  m_PrefabInstance: {fileID: 1802515402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &776722971 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: -1972561897239337021, guid: 172834b29913b0441850bde74353908c, type: 3}
@@ -54844,6 +54836,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1635999085}
     m_Modifications:
+    - target: {fileID: 2661390879306556992, guid: 0b92cf4ea634c214795aa8c95970c870, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741187476892709014, guid: 0b92cf4ea634c214795aa8c95970c870, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6610896128107866312, guid: 0b92cf4ea634c214795aa8c95970c870, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8294968238827841150, guid: 0b92cf4ea634c214795aa8c95970c870, type: 3}
       propertyPath: m_Name
       value: Menu
@@ -68094,6 +68098,7 @@ MonoBehaviour:
   video: {fileID: 891377589}
   inside: 0
   Description: {fileID: 1393103079}
+  collectable1: {fileID: 775683843}
 --- !u!61 &2020487668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75173,6 +75178,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 430410660}
     - target: {fileID: 710194478565786018, guid: 9ffe7518bd1db9a4baf3940fb1e6fa1c, type: 3}
+      propertyPath: BubbleScreenEffect
+      value: 
+      objectReference: {fileID: 427266593}
+    - target: {fileID: 710194478565786018, guid: 9ffe7518bd1db9a4baf3940fb1e6fa1c, type: 3}
       propertyPath: spawnBack.Array.data[0]
       value: 
       objectReference: {fileID: 1671456623}
@@ -75258,7 +75267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 710194478565786025, guid: 9ffe7518bd1db9a4baf3940fb1e6fa1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -92
+      value: -73.4
       objectReference: {fileID: 0}
     - target: {fileID: 710194478565786025, guid: 9ffe7518bd1db9a4baf3940fb1e6fa1c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -80576,7 +80585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6420718082190686935}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 409.9, y: -10.56, z: 0}
+  m_LocalPosition: {x: 379.8, y: -15.4, z: 0}
   m_LocalScale: {x: 1.7, y: 1.7000006, z: 0.8500003}
   m_Children: []
   m_Father: {fileID: 1300953962}

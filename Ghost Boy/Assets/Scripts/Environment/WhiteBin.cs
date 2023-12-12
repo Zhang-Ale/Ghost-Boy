@@ -8,6 +8,7 @@ public class WhiteBin : MonoBehaviour
     public GameObject video;
     public bool inside = false;
     public GameObject Description;
+    public GameObject collectable1; 
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -18,6 +19,7 @@ public class WhiteBin : MonoBehaviour
             if (Input.GetKey(KeyCode.F))
             {
                 StartCoroutine(VideoPlay());
+                collectable1.SetActive(true); 
             }
         }
     }

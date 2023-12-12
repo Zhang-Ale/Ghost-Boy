@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
             healthBar.maxValue = characterStats.MaxHealth;
             healthBar.value = characterStats.CurHealth;
         }     
-        sr = GetComponent<SpriteRenderer>();
+        sr =transform.GetChild(7). GetComponent<SpriteRenderer>();
     }
 
     public void Update()

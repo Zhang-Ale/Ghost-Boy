@@ -30,6 +30,7 @@ public class PlayerEvents : MonoBehaviour
     public GameObject Dialogue2;
     GreenBin GB;
     DialogueTwoImage D2Image;
+    public GameObject BubbleScreenEffect; 
 
     void Start()
     {
@@ -137,6 +138,8 @@ public class PlayerEvents : MonoBehaviour
         }
         leaveBut.SetActive(false);
         Instantiate(exitPart, transform.position, Quaternion.identity);
+        BubbleScreenEffect.SetActive(true);
+        StartCoroutine(BubbleScreen());
         exitPart.Play();
         spawnblock.SetActive(true);
         desertblock.SetActive(false);
@@ -152,6 +155,12 @@ public class PlayerEvents : MonoBehaviour
                 Title.SetActive(true);
             }
         } 
+    }
+
+    IEnumerator BubbleScreen()
+    {
+        yield return new WaitForSeconds(6f);
+        BubbleScreenEffect.SetActive(false); 
     }
 
     public IEnumerator FadeOut(SpriteRenderer _sprite)
