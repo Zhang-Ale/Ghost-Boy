@@ -24,4 +24,4 @@
 [**Drive link**](https://drive.google.com/drive/folders/1UmUn1V4HbuO0sytkH7Bhb47-yaq14HY6?usp=sharing) <br>
 
 # Credits
-All art and music assets are self-made or made by friends. (Own copyrights) 
+All art and music assets are self-made or made by friends. (Copyrights owned) 
