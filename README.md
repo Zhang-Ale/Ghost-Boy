@@ -17,7 +17,7 @@
 
 **Read below before playing the game:**
 1. Charlie's attack doesn't work well on the enemy ghost. <br>
-2. Sometimes if the player used dash in the middle of conversation the conversation will not continue because the player is not inside the collider2D. Please don't move the player when during conversation. 
+2. Sometimes if the player used dash in the middle of conversation the conversation will not continue because the player is not inside the collider2D. Please don't press dash when the player is doing the conversation. 
 
 # Build download link
 (Please download the entire folder named "Build", not just the exe file) <br>
