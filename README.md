@@ -2,7 +2,6 @@
 
 **Team:** <br>
 *Hongcheng Zhang, *Ben Ross <br>
-<br>
 
 **Name:** <br>
 *Ghost boy<br>
