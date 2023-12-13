@@ -14,7 +14,7 @@
 **Mouse roll** to switch character.<br>
 **ESC** to pause game. <br>
 **Hold space** = long jump for Benjamin || fly for Charlie <br>
-
+<br>
 **Read below before playing the game:**
 1. Charlie's attack doesn't work well on the enemy ghost. <br>
 2. Sometimes if the player used dash in the middle of conversation the conversation will not continue because the player is not inside the collider2D. Please don't press dash when the player is doing the conversation. 
