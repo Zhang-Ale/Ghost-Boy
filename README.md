@@ -7,9 +7,9 @@
 *Ghost boy<br>
 
 # How to play
-AD to move horizontally, W to jump, left shift to dash, left mouse click to attack, mouse roll to switch character, ESC to pause game. <br>
-Benjamin: hold space = long jump. <br>
-Charlie: hold space = fly. <br>
+**AD** to move horizontally, **W** to jump, **left shift** to dash, **left mouse click** to attack, **mouse roll** to switch character, **ESC** to pause game. <br>
+Benjamin: **hold space** = long jump. <br>
+Charlie: **hold space** = fly. <br>
 
 **Read below before playing the game:**
 1. Charlie's attack doesn't work well on the enemy ghost. <br>
