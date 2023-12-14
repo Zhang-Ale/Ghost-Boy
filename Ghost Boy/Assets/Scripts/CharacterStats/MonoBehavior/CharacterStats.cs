@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : Singleton<PlayerInstance>
+public class CharacterStats : MonoBehaviour
 {
     public CharacterData_SO characterData;
 
     #region Read from Data_SO
-
-    protected override void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
 
     private void Start()
     {

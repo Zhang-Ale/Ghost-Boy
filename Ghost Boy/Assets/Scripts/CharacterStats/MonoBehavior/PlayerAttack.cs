@@ -124,9 +124,10 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             _enemy = enemy.GetComponent<GameObject>(); 
-            if (_enemy.GetComponent<Feelie_Behaviour>() == true)
+            if (_enemy.GetComponent<EnemyFSM>() == true)
             {
-                _enemy.GetComponent<Feelie_Behaviour>().TakeDamage(characterStats.AttackDamage);
+                _enemy.GetComponent<EnemyFSM>().getHurt = true;
+                _enemy.GetComponent<EnemyFSM>().TakeDamage(characterStats.AttackDamage);
             }
 
             if (_enemy.GetComponent<TriggerRocks>() == true)

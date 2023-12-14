@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        characterStats = transform.GetComponentInParent<CharacterStats>();
+        characterStats = GetComponent<CharacterStats>();
     }
 
     void Start()

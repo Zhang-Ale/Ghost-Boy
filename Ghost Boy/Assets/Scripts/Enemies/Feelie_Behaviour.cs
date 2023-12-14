@@ -17,25 +17,24 @@ public class Feelie_Behaviour : Enemy
     public float playerDistance; //distance between this & player
     public GameObject hotZone;
     public GameObject triggerArea;
-    public int maxHealth = 50;
-    public int currentHealth;
     public AudioClip BattleMusic;
     public AudioClip BackMusic;
     public Transform attackHitBox;
     public float attackRange = 1f;
     public LayerMask enemyLayers;
     public Light2D blinkLight;
+    public GameObject bloodEffect;
     public FeelieHpBar HealthBar;
     public bool flipped = false;
-    public GameObject bloodEffect;
     #endregion
 
     #region Private Variables
+    private CharacterStats characterStats;
     private Animator anim;
     private bool coroutineStarted = false;
     private float distance; //distance between this & target
     SpriteRenderer SR;
-    private Color originalColor;
+    private Color originalColor; 
     [SerializeField]
     bool attackMode;
     [SerializeField]
@@ -49,22 +48,29 @@ public class Feelie_Behaviour : Enemy
     #endregion
 
     private void Awake()
+    {  
+        damageType = DamageTypes.Feelie;
+        characterStats = transform.GetComponentInParent<CharacterStats>();
+    }
+
+    private void Start()
     {
+        characterStats.MaxHealth = 100;
+        characterStats.CurHealth = 100;
+        anim = GetComponent<Animator>();
         SelectTheTarget();
         intTimer = timer; //to store the initial value of timer
-        anim = GetComponent<Animator>();
         SR = GetComponent<SpriteRenderer>();
         originalColor = SR.color;
-        currentHealth = maxHealth;
+        characterStats.CurHealth = characterStats.MaxHealth;
         music = GameObject.Find("AudioManager").GetComponent<Music>();
-        HealthBar.SetHealth(currentHealth, maxHealth);
-        flipped = false;
-        damageType = DamageTypes.Feelie;
+        HealthBar.SetHealth(characterStats.CurHealth, characterStats.MaxHealth);
+        flipped = false; 
     }
 
     void FixedUpdate()
     {
-        HealthBar.SetHealth(currentHealth, maxHealth);
+        HealthBar.SetHealth(characterStats.CurHealth, characterStats.MaxHealth);
         if(player!= null)
         {
             playerDistance = Vector2.Distance(transform.position, player.position);
@@ -92,14 +98,14 @@ public class Feelie_Behaviour : Enemy
             StartCoroutine(EnemyLogic());            
         }
 
-        if (currentHealth <= 0)
+        if (characterStats.CurHealth <= 0)
         {
             Die();
         }
 
         if (playerDistance >= 35)
         {
-            currentHealth = 100;
+            characterStats.MaxHealth = 100;
             playerDistance = 0;
         }
     }
@@ -132,7 +138,7 @@ public class Feelie_Behaviour : Enemy
     public override void TakeDamage(int damage)
     {
         StartCoroutine(ControlMove());
-        currentHealth = Mathf.Max(currentHealth - damage, 0);
+        characterStats.CurHealth = Mathf.Max(characterStats.CurHealth - damage, 0);
         //currentHealth -= damage;
         FlashColor(0.2f);
         Instantiate(bloodEffect, blinkLight.transform.position, Quaternion.identity);

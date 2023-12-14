@@ -55890,7 +55890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1852892894
 RectTransform:
   m_ObjectHideFlags: 0
@@ -74995,24 +74995,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2141611673 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8076097932117861056, guid: c1f60778b1a8dc1428ca1b2d9c7568c5, type: 3}
-  m_PrefabInstance: {fileID: 8076097931736709491}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2141611674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2141611673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24bea27e80c0285479c5d0376569c727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterData: {fileID: 0}
 --- !u!1001 &92896146476281284
 PrefabInstance:
   m_ObjectHideFlags: 0
