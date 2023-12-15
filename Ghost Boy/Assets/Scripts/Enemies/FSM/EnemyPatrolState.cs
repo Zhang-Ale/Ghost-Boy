@@ -24,6 +24,11 @@ public class EnemyPatrolState : IEnemyState
         manager.transform.position = Vector2.MoveTowards(manager.transform.position,
             parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);
 
+        if (parameter.getHurt)
+        {
+            manager.TransitionState(EnemyStateType.Hurt);
+        }
+
         if (parameter.target != null &&
            manager.transform.position.x >= parameter.chasePoints[0].position.x ||
            manager.transform.position.x <= parameter.chasePoints[1].position.x)

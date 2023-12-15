@@ -21,7 +21,13 @@ public class EnemyAttackState : IEnemyState
     public void OnUpdate()
     {
         parameter.info = parameter.anim.GetCurrentAnimatorStateInfo(0);
-        if(parameter.info.normalizedTime >= .95f)
+
+        if (parameter.getHurt)
+        {
+            manager.TransitionState(EnemyStateType.Hurt);
+        }
+
+        if (parameter.info.normalizedTime >= .95f)
         {
             manager.TransitionState(EnemyStateType.Chase);
         }

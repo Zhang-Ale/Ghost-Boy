@@ -7692,6 +7692,11 @@ Transform:
   m_Father: {fileID: 452690898}
   m_RootOrder: 138
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!212 &261579359 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8076097931764979444, guid: c1f60778b1a8dc1428ca1b2d9c7568c5, type: 3}
+  m_PrefabInstance: {fileID: 8076097931736709491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265199545
 GameObject:
   m_ObjectHideFlags: 0
@@ -11160,6 +11165,17 @@ MonoBehaviour:
   fullScreenPanel: {fileID: 1225681996}
   Duration: 1
   levelText: {fileID: 1084308380}
+--- !u!114 &523013233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8076097933117681970, guid: c1f60778b1a8dc1428ca1b2d9c7568c5, type: 3}
+  m_PrefabInstance: {fileID: 8076097931736709491}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &523503829
 GameObject:
   m_ObjectHideFlags: 0
@@ -80580,6 +80596,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 272520322}
     m_Modifications:
+    - target: {fileID: 261579355, guid: c1f60778b1a8dc1428ca1b2d9c7568c5, type: 3}
+      propertyPath: parameter.SR
+      value: 
+      objectReference: {fileID: 261579359}
+    - target: {fileID: 261579355, guid: c1f60778b1a8dc1428ca1b2d9c7568c5, type: 3}
+      propertyPath: parameter.blinkLight
+      value: 
+      objectReference: {fileID: 523013233}
+    - target: {fileID: 261579355, guid: c1f60778b1a8dc1428ca1b2d9c7568c5, type: 3}
+      propertyPath: parameter.bloodEffect
+      value: 
+      objectReference: {fileID: 2371392107485273096, guid: 6c9a3cd43a55b0247b81412cd4c064ac, type: 3}
     - target: {fileID: 8076097931764979446, guid: c1f60778b1a8dc1428ca1b2d9c7568c5, type: 3}
       propertyPath: player
       value: 

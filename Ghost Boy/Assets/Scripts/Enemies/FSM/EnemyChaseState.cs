@@ -28,7 +28,12 @@ public class EnemyChaseState : IEnemyState
             parameter.lightAnim.SetBool("ifInRange", true);
         }
 
-        if(parameter.target == null ||
+        if (parameter.getHurt)
+        {
+            manager.TransitionState(EnemyStateType.Hurt);
+        }
+
+        if (parameter.target == null ||
             manager.transform.position.x < parameter.chasePoints[0].position.x ||
             manager.transform.position.x > parameter.chasePoints[1].position.x)
         {

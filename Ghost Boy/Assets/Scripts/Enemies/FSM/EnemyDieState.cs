@@ -20,11 +20,15 @@ public class EnemyDieState : IEnemyState
 
     public void OnUpdate()
     {
-
+        parameter.info = parameter.anim.GetCurrentAnimatorStateInfo(0);
+        if (parameter.info.normalizedTime >= .95f)
+        {
+            manager.Death();
+        }
     }
 
     public void OnExit()
     {
-
+        
     }
 }

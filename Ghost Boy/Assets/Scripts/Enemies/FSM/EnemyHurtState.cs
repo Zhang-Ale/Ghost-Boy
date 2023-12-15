@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyHurtState : IEnemyState
 {
@@ -20,16 +21,27 @@ public class EnemyHurtState : IEnemyState
 
     public void OnUpdate()
     {
-        if(manager.getHurt == true)
+        manager.FlashColor(0.2f);
+        parameter.info = parameter.anim.GetCurrentAnimatorStateInfo(0);
+
+        if(parameter.characterStats.CurHealth <= 0)
         {
-
+            manager.TransitionState(EnemyStateType.Die);
         }
-
+        else
+        {
+            if(parameter.info.normalizedTime >= .95f)
+            {
+                parameter.target = GameObject.FindGameObjectWithTag("Player").transform;
+                manager.TransitionState(EnemyStateType.Chase);
+            }
+        }
     }
+    
 
     public void OnExit()
     {
-
+        parameter.getHurt = false; 
     }
     
 }

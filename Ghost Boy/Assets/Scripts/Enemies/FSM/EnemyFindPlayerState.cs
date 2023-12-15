@@ -20,7 +20,11 @@ public class EnemyFindPlayerState : IEnemyState
 
     public void OnUpdate()
     {
-        parameter.info = parameter.anim.GetCurrentAnimatorStateInfo(0); 
+        parameter.info = parameter.anim.GetCurrentAnimatorStateInfo(0);
+        if (parameter.getHurt)
+        {
+            manager.TransitionState(EnemyStateType.Hurt);
+        }
         manager.FlipTo(parameter.target);
         parameter.exclamationMark.SetActive(true);
         parameter.HpBar.SetActive(true);

@@ -30,21 +30,23 @@ public class Parameter
     public Color originalColor;
     public Light2D blinkLight;
     public GameObject bloodEffect;
+    public bool getHurt;
 }
 
-public class EnemyFSM : MonoBehaviour
+public class EnemyFSM : Enemy
 {
     public Parameter parameter; 
     private IEnemyState currentState;
     private Dictionary<EnemyStateType, IEnemyState> states = new Dictionary<EnemyStateType, IEnemyState>();
-    public bool getHurt;
 
     void Start()
     {
+        damageType = DamageTypes.Feelie;
         parameter.originalColor = parameter.SR.color;
         parameter.anim = GetComponent<Animator>();
         parameter.lightAnim = transform.GetChild(3).GetComponent<Animator>(); 
-        parameter.characterStats = GetComponentInParent<CharacterStats>(); 
+        parameter.characterStats = GetComponentInParent<CharacterStats>();
+        parameter.characterStats.CurHealth = parameter.characterStats.MaxHealth;
         parameter.SR = GetComponent<SpriteRenderer>();
         states.Add(EnemyStateType.Idle, new EnemyIdleState(this));
         states.Add(EnemyStateType.Patrol, new EnemyPatrolState(this));
@@ -72,15 +74,14 @@ public class EnemyFSM : MonoBehaviour
         currentState.OnEnter(); 
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
+        parameter.getHurt = true; 
         parameter.characterStats.CurHealth = Mathf.Max(parameter.characterStats.CurHealth - damage, 0);
-        FlashColor(0.2f);
         Instantiate(parameter.bloodEffect, parameter.blinkLight.transform.position, Quaternion.identity);
-        parameter.anim.SetTrigger("Damaged");
     }
 
-    private void FlashColor(float time)
+    public void FlashColor(float time)
     {
         parameter.SR.color = Color.red;
         Invoke("ResetColor", time);
@@ -103,6 +104,11 @@ public class EnemyFSM : MonoBehaviour
                 transform.localScale = new Vector3(1, 1, 1); 
             }
         }
+    }
+
+    public void Death()
+    {
+        Destroy(this.gameObject); 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

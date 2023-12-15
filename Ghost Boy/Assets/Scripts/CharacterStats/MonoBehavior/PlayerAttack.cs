@@ -126,8 +126,7 @@ public class PlayerAttack : MonoBehaviour
             _enemy = enemy.GetComponent<GameObject>(); 
             if (_enemy.GetComponent<EnemyFSM>() == true)
             {
-                _enemy.GetComponent<EnemyFSM>().getHurt = true;
-                _enemy.GetComponent<EnemyFSM>().TakeDamage(characterStats.AttackDamage);
+                _enemy.GetComponent<EnemyFSM>().TakeDamage(characterStats.AttackDamage); 
             }
 
             if (_enemy.GetComponent<TriggerRocks>() == true)
