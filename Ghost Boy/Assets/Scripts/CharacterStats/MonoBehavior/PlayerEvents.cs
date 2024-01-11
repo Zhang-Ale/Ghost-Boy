@@ -30,7 +30,7 @@ public class PlayerEvents : MonoBehaviour
     public GameObject Dialogue2;
     GreenBin GB;
     DialogueTwoImage D2Image;
-    public GameObject BubbleScreenEffect; 
+    public GameObject BubbleScreenEffect;
 
     void Start()
     {
@@ -100,17 +100,6 @@ public class PlayerEvents : MonoBehaviour
         {
             Dialogue2.SetActive(true);
             Dialogue1.SetActive(false);
-        }
-
-        if (collision.tag == "LoadPreviousLevel")
-        {
-            StartCoroutine(GameManager.Instance.Previous_Scene());
-        }
-
-        if (collision.tag == "LoadNextLevel")
-        {
-
-            StartCoroutine(GameManager.Instance.Next_Scene());
         }
     }
         /*if (collision.gameObject.name == "SpawnLocation")

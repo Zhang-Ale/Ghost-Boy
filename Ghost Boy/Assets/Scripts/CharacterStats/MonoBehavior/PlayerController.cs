@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fallDetector;
     private CharacterStats characterStats;
     private Camera MainCamera;
-    public Shockwave shockwave;
+    public GameObject shockwave;
     PlayerAttack PA;
 
     [Header("DASH")]
@@ -97,7 +97,8 @@ public class PlayerController : MonoBehaviour
         //Ask Professor
         if (Input.GetKeyDown(KeyCode.E))
         {
-            shockwave.CallShockwave();
+            shockwave.SetActive(true);
+            shockwave.GetComponent<Shockwave>().CallShockwave(); 
         }
     }
 
@@ -353,6 +354,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x * airDragMultiplier, rb.velocity.y);
         }
     }
+
     private void AttemptToDash()
     {
         _isDashing = true;
@@ -416,6 +418,5 @@ public class PlayerController : MonoBehaviour
         {
             respawnPoint = transform.position;
         }
-
     }
 }

@@ -22,9 +22,8 @@ TagManager:
   - Collectable
   - Interactable
   - Guidance
-  - LoadPreviousLevel
-  - LoadNextLevel
   - Breakable
+  - Teleport
   layers:
   - Default
   - TransparentFX
