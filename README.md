@@ -1,4 +1,4 @@
-# Game-625-Final INFO
+# Game: Ghost Boy
 
 **Team:** <br>
 *Hongcheng Zhang, *Ben Ross <br>
