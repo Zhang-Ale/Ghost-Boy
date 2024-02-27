@@ -1,7 +1,7 @@
 # Game: Ghost Boy
 
-**Team:** <br>
-*Hongcheng Zhang, *Ben Ross <br>
+**Made by:** <br>
+*Hongcheng Zhang <br>
 
 **Name:** <br>
 *Ghost boy<br>
