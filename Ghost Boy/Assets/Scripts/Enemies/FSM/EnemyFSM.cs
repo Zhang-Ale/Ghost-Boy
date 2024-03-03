@@ -36,7 +36,7 @@ public class Parameter
 public class EnemyFSM : Enemy
 {
     public Parameter parameter; 
-    private IEnemyState currentState;
+    public IEnemyState currentState;
     private Dictionary<EnemyStateType, IEnemyState> states = new Dictionary<EnemyStateType, IEnemyState>();
 
     void Start()

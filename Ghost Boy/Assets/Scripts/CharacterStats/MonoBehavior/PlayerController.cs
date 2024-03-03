@@ -28,11 +28,10 @@ public class PlayerController : MonoBehaviour
     public bool canLongJump;
 
     [Header("Fly")]
-    Coroutine staminaDeCo;
-    Coroutine staminaInCo;
+    Coroutine staminaDecreaseCoroutine;
+    Coroutine staminaIncreaseCoroutine;
     bool flyingCheck;
     public int maxFlyStamina;
-    int curFlyStamina;
     public Slider flySlider;
     public Vector2 upForce;
 
@@ -76,11 +75,9 @@ public class PlayerController : MonoBehaviour
         groundCheck = transform.GetChild(0).transform;
         wallCheck = transform.GetChild(1).transform;
         amountOfJumpsLeft = amountOfJumps;
-        staminaDeCo = StartCoroutine(DecreaseStats(1, 0));
-        staminaInCo = StartCoroutine(IncreaseStats(2, 0));
+        staminaDecreaseCoroutine = StartCoroutine(DecreaseStats(1, 0));
+        staminaIncreaseCoroutine = StartCoroutine(IncreaseStats(2, 0));
         jumpSlider.value = 0f;
-        curFlyStamina = maxFlyStamina; 
-        flySlider.value = curFlyStamina; 
         MainCamera = Camera.main;
     }
 
@@ -93,7 +90,7 @@ public class PlayerController : MonoBehaviour
         CheckDash();
         var screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-80f, 0f, 0f);
         jumpSlider.transform.position = screenPos;
-        flySlider.transform.position = screenPos; 
+        flySlider.transform.position = screenPos;
         //Ask Professor
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -204,24 +201,24 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfCanFly()
     { 
-        if (!isFlying && flyingCheck && staminaDeCo != null)
+        if (!isFlying && flyingCheck && staminaDecreaseCoroutine != null)
         {
             flyingCheck = false;
-            StopCoroutine(staminaDeCo);
-            staminaInCo = StartCoroutine(IncreaseStats(1, 1));
+            StopCoroutine(staminaDecreaseCoroutine);
+            staminaIncreaseCoroutine = StartCoroutine(IncreaseStats(1, 1));
         }
         if (isFlying && !flyingCheck)
         {
             flyingCheck = true;
-            staminaDeCo = StartCoroutine(DecreaseStats(1, 2));
-            StopCoroutine(staminaInCo);
+            staminaDecreaseCoroutine = StartCoroutine(DecreaseStats(1, 2));
+            StopCoroutine(staminaIncreaseCoroutine);
         }
 
-        if(curFlyStamina <= 0)
+        if(flySlider.value <= 0f)
         {
             canFly = false; 
         }
-        if(curFlyStamina > 0)
+        if(flySlider.value > 0)
         {
             canFly = true; 
         }
@@ -234,13 +231,16 @@ public class PlayerController : MonoBehaviour
 
     private void Fly()
     {
-        if(Input.GetKey(KeyCode.Space) && canFly)
+        if(Input.GetKey(KeyCode.Space))
         {
             anim.SetBool("Flying", true);
             isFlying = true;
             flySlider.gameObject.GetComponent<CanvasGroup>().alpha = 1f;
             //rb.AddForce(upForce);
-            rb.velocity = Vector2.up * 4 + upForce;
+            if (canFly)
+            {
+                rb.velocity = Vector2.up * 2.5f + upForce;
+            }
         }
 
         if(Input.GetKeyUp(KeyCode.Space) && isFlying)
@@ -269,7 +269,7 @@ public class PlayerController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(interval);
-            if (flySlider.value <= maxFlyStamina - 5)
+            if (flySlider.value <= maxFlyStamina - 1)
             {
                 flySlider.value = Mathf.Max(flySlider.value + amount, 0);
             }

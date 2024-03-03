@@ -32,6 +32,7 @@ public class EnemyHurtState : IEnemyState
         {
             if(parameter.info.normalizedTime >= .95f)
             {
+                Debug.Log("Hurt");
                 parameter.target = GameObject.FindGameObjectWithTag("Player").transform;
                 manager.TransitionState(EnemyStateType.Chase);
             }

@@ -29,8 +29,8 @@ public class EnemyIdleState : IEnemyState
         }
 
         if (parameter.target != null &&
-           manager.transform.position.x >= parameter.chasePoints[0].position.x ||
-           manager.transform.position.x <= parameter.chasePoints[1].position.x)
+           (manager.transform.position.x >= parameter.chasePoints[0].position.x ||
+           manager.transform.position.x <= parameter.chasePoints[1].position.x))
         {
             manager.TransitionState(EnemyStateType.FindPlayer);
         }

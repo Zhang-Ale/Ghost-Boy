@@ -46,7 +46,7 @@ public class Shake : MonoBehaviour
         isShaking = true;
         yield return new WaitForSeconds(0.2f);
         Shake.Instance.CamShake(0, 2.5f);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.3f);
         isShaking = false;
     }
 
@@ -57,7 +57,7 @@ public class Shake : MonoBehaviour
         isShaking = true;
         yield return new WaitForSeconds(0.2f);
         Shake.Instance.CamShake(0, 2.5f);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.3f);
         isShaking = false;
     }
 }

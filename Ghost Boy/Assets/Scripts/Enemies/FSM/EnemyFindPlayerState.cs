@@ -25,6 +25,7 @@ public class EnemyFindPlayerState : IEnemyState
         {
             manager.TransitionState(EnemyStateType.Hurt);
         }
+        Debug.Log("Find");
         manager.FlipTo(parameter.target);
         parameter.exclamationMark.SetActive(true);
         parameter.HpBar.SetActive(true);

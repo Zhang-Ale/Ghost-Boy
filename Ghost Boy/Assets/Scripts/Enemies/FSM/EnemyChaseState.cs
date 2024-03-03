@@ -37,6 +37,7 @@ public class EnemyChaseState : IEnemyState
             manager.transform.position.x < parameter.chasePoints[0].position.x ||
             manager.transform.position.x > parameter.chasePoints[1].position.x)
         {
+            Debug.Log("Chase");
             manager.TransitionState(EnemyStateType.Idle);
             parameter.lightAnim.SetBool("ifInRange", false);
             parameter.exclamationMark.SetActive(false);
