@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     bool flyingCheck;
     public int maxFlyStamina;
     public Slider flySlider;
-    public Vector2 upForce;
+    public float flyForce;
 
     [Header("Checking conditions")]
     [SerializeField] private int facingDirection = 1;
@@ -239,7 +239,8 @@ public class PlayerController : MonoBehaviour
             //rb.AddForce(upForce);
             if (canFly)
             {
-                rb.velocity = Vector2.up * 2.5f + upForce;
+                Vector2 flyingVelocity = new Vector2(movementInputDirection * movementSpeed, flyForce);
+                rb.velocity = flyingVelocity;
             }
         }
 
