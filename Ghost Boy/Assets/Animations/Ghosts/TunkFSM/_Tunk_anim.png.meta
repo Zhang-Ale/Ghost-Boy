@@ -1,7 +1,208 @@
 fileFormatVersion: 2
 guid: 7fd4f2117dae3f24bba414a29df1e792
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1008759939415641454
+    second: _Tunk_attack_0
+  - first:
+      213: -471472874393062217
+    second: _Tunk_attack_1
+  - first:
+      213: -2992285782604309774
+    second: _Tunk_attack_2
+  - first:
+      213: -5261051161598059419
+    second: _Tunk_attack_3
+  - first:
+      213: -8518646080565930747
+    second: _Tunk_attack_4
+  - first:
+      213: 5664400745792434640
+    second: _Tunk_attack_5
+  - first:
+      213: -1470747160560071687
+    second: _Tunk_attack_6
+  - first:
+      213: -8179429596094786725
+    second: _Tunk_attack_7
+  - first:
+      213: -7747122261822675195
+    second: _Tunk_walk_0
+  - first:
+      213: 8506090527483387239
+    second: _Tunk_walk_1
+  - first:
+      213: -2015133847333134304
+    second: _Tunk_walk_2
+  - first:
+      213: -6064198167570535357
+    second: _Tunk_walk_3
+  - first:
+      213: -3620344272742621001
+    second: _Tunk_walk_4
+  - first:
+      213: 7192297355698699571
+    second: _Tunk_walk_5
+  - first:
+      213: -1187686318594714431
+    second: _Tunk_walk_6
+  - first:
+      213: 2732615068956369079
+    second: _Tunk_walk_7
+  - first:
+      213: -1670028760198524212
+    second: _Tunk_walk_8
+  - first:
+      213: 5116688209969096482
+    second: _Tunk_walk_9
+  - first:
+      213: -2927698583301035968
+    second: _Tunk_walk_10
+  - first:
+      213: -8696678241978464533
+    second: _Tunk_walk_11
+  - first:
+      213: -7703529176536183960
+    second: _Tunk_walk_12
+  - first:
+      213: -8233699228405678198
+    second: _Tunk_walk_13
+  - first:
+      213: -7374930886831017468
+    second: _Tunk_walk_14
+  - first:
+      213: -80956204997893996
+    second: _Tunk_walk_15
+  - first:
+      213: 1660006081448738629
+    second: _Tunk_anim_81
+  - first:
+      213: -174200043700949508
+    second: _Tunk_burst_0
+  - first:
+      213: -2008613642930257050
+    second: _Tunk_burst_1
+  - first:
+      213: -635335410364188710
+    second: _Tunk_burst_2
+  - first:
+      213: 5832405292727705884
+    second: _Tunk_burst_3
+  - first:
+      213: -6766299189085026690
+    second: _Tunk_burst_4
+  - first:
+      213: -1763133568195059014
+    second: _Tunk_burst_5
+  - first:
+      213: -5162110352804896416
+    second: _Tunk_burst_6
+  - first:
+      213: 939292465910794573
+    second: _Tunk_burst_7
+  - first:
+      213: -1424985183106038422
+    second: _Tunk_burst_8
+  - first:
+      213: -1050851957449435279
+    second: _Tunk_burst_9
+  - first:
+      213: -5194871886898520405
+    second: _Tunk_burst_10
+  - first:
+      213: -5995783835655670783
+    second: _Tunk_burst_11
+  - first:
+      213: 6825347554740942379
+    second: _Tunk_burst_12
+  - first:
+      213: 5810073117075720580
+    second: _Tunk_burst_13
+  - first:
+      213: -2373236679846649545
+    second: _Tunk_burst_14
+  - first:
+      213: 241793793334110431
+    second: _Tunk_burst_15
+  - first:
+      213: -423417897129570017
+    second: _Tunk_die_0
+  - first:
+      213: 7177009123485972349
+    second: _Tunk_die_1
+  - first:
+      213: -6565800861251670515
+    second: _Tunk_die_2
+  - first:
+      213: 1326901488451638155
+    second: _Tunk_die_3
+  - first:
+      213: 7497487542543554416
+    second: _Tunk_die_4
+  - first:
+      213: -1373242398763029573
+    second: _Tunk_die_5
+  - first:
+      213: -3498105844859565950
+    second: _Tunk_die_6
+  - first:
+      213: 5326842515893054048
+    second: _Tunk_die_7
+  - first:
+      213: 6729584550265002121
+    second: _Tunk_die_8
+  - first:
+      213: -273421138613608346
+    second: _Tunk_die_10
+  - first:
+      213: 2280183063316969160
+    second: _Tunk_die_9
+  - first:
+      213: -8018992221429872494
+    second: _Tunk_die_11
+  - first:
+      213: 2279707092299015418
+    second: _Tunk_die_12
+  - first:
+      213: -974584988511769540
+    second: _Tunk_die_13
+  - first:
+      213: 2459506917058034081
+    second: _Tunk_die_14
+  - first:
+      213: -6777758113497878057
+    second: _Tunk_die_15
+  - first:
+      213: 3003682145600896980
+    second: _Tunk_die_16
+  - first:
+      213: 1391935734883296051
+    second: _Tunk_die_17
+  - first:
+      213: 7033081844706209407
+    second: _Tunk_die_18
+  - first:
+      213: 4234480338770811491
+    second: _Tunk_die_19
+  - first:
+      213: 4193893896918440761
+    second: _Tunk_die_20
+  - first:
+      213: -7134890839578898894
+    second: _Tunk_die_21
+  - first:
+      213: -1749157248923844105
+    second: _Tunk_die_22
+  - first:
+      213: 3535840597028249480
+    second: _Tunk_die_23
+  - first:
+      213: -5433373383112902478
+    second: _Tunk_die_24
+  - first:
+      213: -2735745307623662545
+    second: _Tunk_die_25
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -32,16 +233,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -55,6 +256,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -73,9 +276,1407 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: _Tunk_attack_0
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 5493
+        width: 597
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2927c730e2a2002f0800000000000000
+      internalID: -1008759939415641454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_attack_1
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 5493
+        width: 658
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b4b1903bedf479f0800000000000000
+      internalID: -471472874393062217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_attack_2
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 5493
+        width: 687
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fa1b6d3fe34976d0800000000000000
+      internalID: -2992285782604309774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_attack_3
+      rect:
+        serializedVersion: 2
+        x: 2169
+        y: 5493
+        width: 683
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56c9acfb7ddfcf6b0800000000000000
+      internalID: -5261051161598059419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_attack_4
+      rect:
+        serializedVersion: 2
+        x: 2873
+        y: 5493
+        width: 678
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50518900680b7c980800000000000000
+      internalID: -8518646080565930747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_attack_5
+      rect:
+        serializedVersion: 2
+        x: 3598
+        y: 5486
+        width: 654
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d17a6e877efb9e40800000000000000
+      internalID: 5664400745792434640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_attack_6
+      rect:
+        serializedVersion: 2
+        x: 4283
+        y: 5486
+        width: 801
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb0764ff3bd69be0800000000000000
+      internalID: -1470747160560071687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_attack_7
+      rect:
+        serializedVersion: 2
+        x: 5158
+        y: 5486
+        width: 671
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b53147b6e14dc7e80800000000000000
+      internalID: -8179429596094786725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_0
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 4775
+        width: 662
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507e9805951bc7490800000000000000
+      internalID: -7747122261822675195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_1
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 4775
+        width: 665
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d56fd7444bb0670800000000000000
+      internalID: 8506090527483387239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_2
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 4777
+        width: 676
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 020a7d6417ec804e0800000000000000
+      internalID: -2015133847333134304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_3
+      rect:
+        serializedVersion: 2
+        x: 2349
+        y: 4775
+        width: 644
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c226665e3a7dba0800000000000000
+      internalID: -6064198167570535357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_4
+      rect:
+        serializedVersion: 2
+        x: 3056
+        y: 4775
+        width: 606
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b06e8ab014f1cdc0800000000000000
+      internalID: -3620344272742621001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_5
+      rect:
+        serializedVersion: 2
+        x: 3715
+        y: 4775
+        width: 587
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33df66da65c20d360800000000000000
+      internalID: 7192297355698699571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_6
+      rect:
+        serializedVersion: 2
+        x: 4430
+        y: 4775
+        width: 635
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4129bf59d748fe0800000000000000
+      internalID: -1187686318594714431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_7
+      rect:
+        serializedVersion: 2
+        x: 5162
+        y: 4767
+        width: 782
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b0260d5de23ce520800000000000000
+      internalID: 2732615068956369079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 4268
+        width: 754
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc25ea7d0bdd2d8e0800000000000000
+      internalID: -1670028760198524212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_9
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 4271
+        width: 650
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22723ad41d0220740800000000000000
+      internalID: 5116688209969096482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_10
+      rect:
+        serializedVersion: 2
+        x: 1678
+        y: 4264
+        width: 611
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0486dec66a9be57d0800000000000000
+      internalID: -2927698583301035968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_11
+      rect:
+        serializedVersion: 2
+        x: 2384
+        y: 4264
+        width: 593
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be6410547313f4780800000000000000
+      internalID: -8696678241978464533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_12
+      rect:
+        serializedVersion: 2
+        x: 3071
+        y: 4264
+        width: 620
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b04bb6701971590800000000000000
+      internalID: -7703529176536183960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_13
+      rect:
+        serializedVersion: 2
+        x: 3805
+        y: 4264
+        width: 555
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8fb87ffc260cbd80800000000000000
+      internalID: -8233699228405678198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_14
+      rect:
+        serializedVersion: 2
+        x: 4494
+        y: 4264
+        width: 572
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4027167be6bf6a990800000000000000
+      internalID: -7374930886831017468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_walk_15
+      rect:
+        serializedVersion: 2
+        x: 5106
+        y: 4264
+        width: 740
+        height: 469
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 490acbea2c260eef0800000000000000
+      internalID: -80956204997893996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_0
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 3229
+        width: 628
+        height: 478
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfde853bbfd159df0800000000000000
+      internalID: -174200043700949508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_1
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 3229
+        width: 882
+        height: 482
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663832aa888ff14e0800000000000000
+      internalID: -2008613642930257050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_2
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 3229
+        width: 973
+        height: 486
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad7f3087fc5de27f0800000000000000
+      internalID: -635335410364188710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_3
+      rect:
+        serializedVersion: 2
+        x: 2774
+        y: 3229
+        width: 1144
+        height: 486
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c11a42b56bdd0f050800000000000000
+      internalID: 5832405292727705884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_4
+      rect:
+        serializedVersion: 2
+        x: 3956
+        y: 3229
+        width: 887
+        height: 639
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e76c296acb64912a0800000000000000
+      internalID: -6766299189085026690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_5
+      rect:
+        serializedVersion: 2
+        x: 4891
+        y: 3229
+        width: 525
+        height: 888
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab2aa287c571887e0800000000000000
+      internalID: -1763133568195059014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_6
+      rect:
+        serializedVersion: 2
+        x: 5509
+        y: 3229
+        width: 604
+        height: 794
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061a2b1fbff7c58b0800000000000000
+      internalID: -5162110352804896416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_7
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 2539
+        width: 689
+        height: 566
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4940da6589090d00800000000000000
+      internalID: 939292465910794573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_8
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 2537
+        width: 663
+        height: 504
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6505ce968f693ce0800000000000000
+      internalID: -1424985183106038422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_9
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 2537
+        width: 598
+        height: 510
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177d3bc56bf9a61f0800000000000000
+      internalID: -1050851957449435279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_10
+      rect:
+        serializedVersion: 2
+        x: 2393
+        y: 2537
+        width: 679
+        height: 500
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae10cfda8b18e7b0800000000000000
+      internalID: -5194871886898520405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_11
+      rect:
+        serializedVersion: 2
+        x: 3142
+        y: 2537
+        width: 767
+        height: 500
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 104f6b55e52bacca0800000000000000
+      internalID: -5995783835655670783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_12
+      rect:
+        serializedVersion: 2
+        x: 4007
+        y: 2546
+        width: 985
+        height: 508
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b263ae4507188be50800000000000000
+      internalID: 6825347554740942379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_13
+      rect:
+        serializedVersion: 2
+        x: 5123
+        y: 2541
+        width: 1046
+        height: 516
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 489485687b681a050800000000000000
+      internalID: 5810073117075720580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_14
+      rect:
+        serializedVersion: 2
+        x: 6305
+        y: 2541
+        width: 1156
+        height: 516
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73120d940d1901fd0800000000000000
+      internalID: -2373236679846649545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_burst_15
+      rect:
+        serializedVersion: 2
+        x: 7598
+        y: 2537
+        width: 1085
+        height: 517
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8e2988c260b5300800000000000000
+      internalID: 241793793334110431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_0
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1425
+        width: 588
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f119c0a7aa7bf1af0800000000000000
+      internalID: -423417897129570017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_1
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1425
+        width: 588
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d777e1bb5cbd99360800000000000000
+      internalID: 7177009123485972349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_2
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 1425
+        width: 543
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ee32f57e691e4a0800000000000000
+      internalID: -6565800861251670515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_3
+      rect:
+        serializedVersion: 2
+        x: 2065
+        y: 1425
+        width: 536
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b83d81f9fd91a6210800000000000000
+      internalID: 1326901488451638155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_4
+      rect:
+        serializedVersion: 2
+        x: 2683
+        y: 1425
+        width: 538
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0779931523d6c0860800000000000000
+      internalID: 7497487542543554416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_5
+      rect:
+        serializedVersion: 2
+        x: 3298
+        y: 1425
+        width: 551
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb6937605341fce0800000000000000
+      internalID: -1373242398763029573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_6
+      rect:
+        serializedVersion: 2
+        x: 3892
+        y: 1425
+        width: 590
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2888d62944b347fc0800000000000000
+      internalID: -3498105844859565950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_7
+      rect:
+        serializedVersion: 2
+        x: 4527
+        y: 1425
+        width: 621
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ae04e9b0fbce940800000000000000
+      internalID: 5326842515893054048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_8
+      rect:
+        serializedVersion: 2
+        x: 5226
+        y: 1425
+        width: 866
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 988908c5e79446d50800000000000000
+      internalID: 6729584550265002121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_10
+      rect:
+        serializedVersion: 2
+        x: 7201
+        y: 1425
+        width: 958
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6606ade4cec943cf0800000000000000
+      internalID: -273421138613608346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_9
+      rect:
+        serializedVersion: 2
+        x: 6150
+        y: 1425
+        width: 978
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c6bed74a66d4af10800000000000000
+      internalID: 2280183063316969160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_11
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 813
+        width: 967
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2984d01af01d6b090800000000000000
+      internalID: -8018992221429872494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_12
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 813
+        width: 966
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4eb64a58523af10800000000000000
+      internalID: 2279707092299015418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_13
+      rect:
+        serializedVersion: 2
+        x: 2169
+        y: 813
+        width: 1014
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3ce354dd149972f0800000000000000
+      internalID: -974584988511769540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_14
+      rect:
+        serializedVersion: 2
+        x: 3263
+        y: 813
+        width: 1000
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a93cd1928ce12220800000000000000
+      internalID: 2459506917058034081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_15
+      rect:
+        serializedVersion: 2
+        x: 4322
+        y: 813
+        width: 1014
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d1ff67e7e090f1a0800000000000000
+      internalID: -6777758113497878057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_16
+      rect:
+        serializedVersion: 2
+        x: 5369
+        y: 813
+        width: 1028
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df79ba4ff83fa920800000000000000
+      internalID: 3003682145600896980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_17
+      rect:
+        serializedVersion: 2
+        x: 6434
+        y: 813
+        width: 1009
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33324e31d26215310800000000000000
+      internalID: 1391935734883296051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_18
+      rect:
+        serializedVersion: 2
+        x: 7518
+        y: 813
+        width: 1022
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e66f5cca68a9160800000000000000
+      internalID: 7033081844706209407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_19
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 172
+        width: 1032
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a5fc0de65e3ca30800000000000000
+      internalID: 4234480338770811491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_20
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 172
+        width: 1028
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b908f6744b33a30800000000000000
+      internalID: 4193893896918440761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_21
+      rect:
+        serializedVersion: 2
+        x: 2326
+        y: 172
+        width: 1026
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23e06bb6596cbfc90800000000000000
+      internalID: -7134890839578898894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_22
+      rect:
+        serializedVersion: 2
+        x: 3392
+        y: 172
+        width: 1033
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f14891efbeb9b7e0800000000000000
+      internalID: -1749157248923844105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_23
+      rect:
+        serializedVersion: 2
+        x: 4461
+        y: 172
+        width: 1033
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88f16401a44d11130800000000000000
+      internalID: 3535840597028249480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_24
+      rect:
+        serializedVersion: 2
+        x: 5541
+        y: 172
+        width: 1026
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b83e7ff1b7c894b0800000000000000
+      internalID: -5433373383112902478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Tunk_die_25
+      rect:
+        serializedVersion: 2
+        x: 6608
+        y: 172
+        width: 1022
+        height: 581
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c5627232ea80ad0800000000000000
+      internalID: -2735745307623662545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

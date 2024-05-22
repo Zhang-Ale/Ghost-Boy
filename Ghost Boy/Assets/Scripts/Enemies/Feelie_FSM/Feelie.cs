@@ -1,13 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class Feelie_Behaviour : Enemy
+public class Feelie : Enemy
 {
     #region Public Variables
     public float attackDistance;
-    public float moveSpeed;
     public float timer;
     public bool inRange; //check if player is in range
     public Transform player;
@@ -29,12 +28,10 @@ public class Feelie_Behaviour : Enemy
     #endregion
 
     #region Private Variables
-    private CharacterStats characterStats;
-    private Animator anim;
     private bool coroutineStarted = false;
     private float distance; //distance between this & target
     SpriteRenderer SR;
-    private Color originalColor; 
+    private Color originalColor;
     [SerializeField]
     bool attackMode;
     [SerializeField]
@@ -47,31 +44,23 @@ public class Feelie_Behaviour : Enemy
     Music music;
     #endregion
 
-    private void Awake()
-    {  
-        damageType = DamageTypes.Feelie;
-        characterStats = transform.GetComponentInParent<CharacterStats>();
-    }
-
     private void Start()
     {
-        characterStats.MaxHealth = 100;
-        characterStats.CurHealth = 100;
-        anim = GetComponent<Animator>();
+        damageType = DamageTypes.Feelie;
         SelectTheTarget();
         intTimer = timer; //to store the initial value of timer
         SR = GetComponent<SpriteRenderer>();
         originalColor = SR.color;
-        characterStats.CurHealth = characterStats.MaxHealth;
+        curHealth = maxHealth; 
         music = GameObject.Find("AudioManager").GetComponent<Music>();
-        HealthBar.SetHealth(characterStats.CurHealth, characterStats.MaxHealth);
-        flipped = false; 
+        HealthBar.SetHealth(curHealth, maxHealth);
+        flipped = false;
     }
 
     void FixedUpdate()
     {
-        HealthBar.SetHealth(characterStats.CurHealth, characterStats.MaxHealth);
-        if(player!= null)
+        HealthBar.SetHealth(curHealth, maxHealth);
+        if (player != null)
         {
             playerDistance = Vector2.Distance(transform.position, player.position);
         }
@@ -95,17 +84,17 @@ public class Feelie_Behaviour : Enemy
 
         if (inRange && !cooling)
         {
-            StartCoroutine(EnemyLogic());            
+            StartCoroutine(EnemyLogic());
         }
 
-        if (characterStats.CurHealth <= 0)
+        if (curHealth <= 0)
         {
             Die();
         }
 
         if (playerDistance >= 35)
         {
-            characterStats.MaxHealth = 100;
+            maxHealth = 100;
             playerDistance = 0;
         }
     }
@@ -115,9 +104,9 @@ public class Feelie_Behaviour : Enemy
         coroutineStarted = true;
         if (!inRange)
         {
-            moveSpeed = 2f;
+            currentSpeed = normalSpeed; 
             yield return new WaitForSeconds(5);
-            moveSpeed = 0f;
+            currentSpeed = 0f; 
             yield return new WaitForSeconds(5);
             coroutineStarted = false;
         }
@@ -138,8 +127,7 @@ public class Feelie_Behaviour : Enemy
     public override void TakeDamage(int damage)
     {
         StartCoroutine(ControlMove());
-        characterStats.CurHealth = Mathf.Max(characterStats.CurHealth - damage, 0);
-        //currentHealth -= damage;
+        curHealth = Mathf.Max(curHealth - damage, 0);
         FlashColor(0.2f);
         Instantiate(bloodEffect, blinkLight.transform.position, Quaternion.identity);
         anim.SetTrigger("Damaged");
@@ -152,7 +140,7 @@ public class Feelie_Behaviour : Enemy
     }
 
     private void ResetColor()
-    { 
+    {
         SR.color = originalColor;
     }
 
@@ -164,15 +152,15 @@ public class Feelie_Behaviour : Enemy
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
         Destroy(this.gameObject, 2f);
-       // if(BackMusic != null)
-       // {
-       //     music.ChangeBGM(BackMusic);
-       // }       
+        // if(BackMusic != null)
+        // {
+        //     music.ChangeBGM(BackMusic);
+        // }       
     }
 
     IEnumerator EnemyLogic()
     {
-        moveSpeed = 5f;
+        currentSpeed = chaseSpeed; 
         Animator lightAnim = blinkLight.GetComponent<Animator>();
         lightAnim.SetBool("ifInRange", true);
         distance = Vector2.Distance(transform.position, target.position);
@@ -195,33 +183,34 @@ public class Feelie_Behaviour : Enemy
         }
     }
 
-    void Move()
+    public override void Move()
     {
-        anim.SetBool("CanWalk", true);      
+        base.Move(); 
+        anim.SetBool("CanWalk", true);
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Feelie_attack"))
         {
             if (!flipped)
             {
                 Vector2 targetPosition = new Vector2(target.position.x - 1f, transform.position.y);
-                transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
             }
             else
             {
                 Vector2 targetPosition = new Vector2(target.position.x + 1f, transform.position.y);
-                transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
             }
         }
-    }   
+    }
 
     void Attack()
     {
         timer = intTimer; // reset Timer when player enters in attack range
         attackMode = true; //to check if enemy can still attack or not
-        
+
         anim.SetBool("CanWalk", false);
         anim.SetBool("CanAttacking", true);
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitBox.position, attackRange, enemyLayers);       
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitBox.position, attackRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
             if (!cooling && enemy.GetComponent<PlayerHealth>() == true)
@@ -268,7 +257,7 @@ public class Feelie_Behaviour : Enemy
             flipped = false;
         }
 
-        coroutineStarted = false;        
+        coroutineStarted = false;
 
         StartCoroutine(Flipped());
     }
@@ -296,7 +285,7 @@ public class Feelie_Behaviour : Enemy
     {
         Vector3 rotation = transform.eulerAngles;
         if (!FeelieIsDamaged)
-        {   
+        {
             if (transform.position.x > target.position.x)
             {
                 rotation.y = 180;
@@ -308,7 +297,7 @@ public class Feelie_Behaviour : Enemy
                 flipped = false;
             }
             transform.eulerAngles = rotation;
-            yield return new WaitForSeconds(2f);           
+            yield return new WaitForSeconds(2f);
         }
     }
 }

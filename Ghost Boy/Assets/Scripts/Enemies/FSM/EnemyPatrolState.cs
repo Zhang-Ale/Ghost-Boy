@@ -21,8 +21,8 @@ public class EnemyPatrolState : IEnemyState
     public void OnUpdate()
     {
         manager.FlipTo(parameter.patrolPoints[patrolPosition]);
-        manager.transform.position = Vector2.MoveTowards(manager.transform.position,
-            parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);
+        //manager.transform.position = Vector2.MoveTowards(manager.transform.position,
+            //parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);
 
         if (parameter.getHurt)
         {

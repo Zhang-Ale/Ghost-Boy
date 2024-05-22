@@ -13,8 +13,6 @@ public enum EnemyStateType
 public class Parameter
 {
     public CharacterStats characterStats;
-    public float moveSpeed;
-    public float chaseSpeed;
     public float idleTime; 
     public Transform[] patrolPoints;
     //public Collider2D triggeredRange; 
@@ -41,9 +39,9 @@ public class EnemyFSM : Enemy
 
     void Start()
     {
+        currentSpeed = normalSpeed; 
         damageType = DamageTypes.Feelie;
         parameter.originalColor = parameter.SR.color;
-        parameter.anim = GetComponent<Animator>();
         parameter.lightAnim = transform.GetChild(3).GetComponent<Animator>(); 
         parameter.characterStats = GetComponentInParent<CharacterStats>();
         parameter.characterStats.CurHealth = parameter.characterStats.MaxHealth;

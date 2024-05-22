@@ -77,7 +77,9 @@ public class PlayerDialogue : MonoBehaviour
 
                         dialogBox.SetActive(false);
                         dialogBoxText.text = "- Click to continue -";
-                        PC.movementSpeed = 10;
+                        PC.movementSpeed = 10f;
+                        PC.flyForce = 4.5f;
+                        PC.jumpForce = 12f; 
                         return; 
                     }
 
@@ -104,6 +106,8 @@ public class PlayerDialogue : MonoBehaviour
             _isPlayerInside = true;
             dialogBox.SetActive(true);
             PC.movementSpeed = 0;
+            PC.flyForce = 0;
+            PC.jumpForce = 0; 
         }
     }
 

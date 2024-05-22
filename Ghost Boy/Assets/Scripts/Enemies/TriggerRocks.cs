@@ -5,10 +5,11 @@ using UnityEngine;
 public class TriggerRocks : Enemy
 {
     public int _rockLife = 1;
+    public float _life; 
     public Transform _fallingPoint;
     public Transform _fallingPoint2;
     public GameObject _fallingRock;
-    Rigidbody2D rb;
+    Rigidbody2D rb2;
     public bool _fall = false;
     TriggerRocks trig;
     SpriteRenderer render;
@@ -21,12 +22,10 @@ public class TriggerRocks : Enemy
 
     private void Start()
     {
-        //rb = _fallingRock.GetComponent<Rigidbody2D>();
-        //rb.bodyType = RigidbodyType2D.Kinematic;
+        rb2 = _fallingRock.GetComponent<Rigidbody2D>();
         coll = GetComponentInChildren<BoxCollider2D>();
         render = this.GetComponent<SpriteRenderer>();
-        rb = _fallingRock.GetComponent<Rigidbody2D>();
-        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb2.bodyType = RigidbodyType2D.Dynamic;
         trig = GameObject.FindGameObjectWithTag("TriggerRock").GetComponent<TriggerRocks>();
         startTime = Time.time;
         _life = 30f;
@@ -69,18 +68,18 @@ public class TriggerRocks : Enemy
             if (isFlipped == false)
             {
                 Instantiate(_fallingRock, new Vector2(_fallingPoint.position.x, _fallingPoint.position.y), Quaternion.identity);
-                //rb.bodyType = RigidbodyType2D.Dynamic;
+                rb2.bodyType = RigidbodyType2D.Dynamic;
                 yield return new WaitForSeconds(1f);
-                //rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-                rb.isKinematic = true;
+                //rb2.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+                rb2.isKinematic = true;
             }
             if (isFlipped == true)
             {
                 Instantiate(_fallingRock, new Vector2(_fallingPoint2.position.x, _fallingPoint2.position.y), Quaternion.identity);
-                //rb.bodyType = RigidbodyType2D.Dynamic;
+                rb2.bodyType = RigidbodyType2D.Dynamic;
                 yield return new WaitForSeconds(1f);
-                //rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-                rb.isKinematic = true;
+                //rb2.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+                rb2.isKinematic = true;
             }
         }
     }

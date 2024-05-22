@@ -83,11 +83,7 @@ public class PlayerEvents : MonoBehaviour
     {
         if (collision.gameObject.name == "PlaceSwitch")
         {
-            leaveButtonOn = true;   
-        }
-        else
-        {
-            leaveButtonOn = false;
+            leaveButtonOn = true;
         }
 
         if (collision.gameObject == Interactable1)
@@ -125,7 +121,7 @@ public class PlayerEvents : MonoBehaviour
         {
             StartCoroutine(FadeIn(desertBack[_spawn]));
         }
-        leaveBut.SetActive(false);
+        leaveButtonOn = false; 
         Instantiate(exitPart, transform.position, Quaternion.identity);
         BubbleScreenEffect.SetActive(true);
         StartCoroutine(BubbleScreen());

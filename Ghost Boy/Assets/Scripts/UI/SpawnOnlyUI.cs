@@ -39,7 +39,7 @@ public class SpawnOnlyUI : MonoBehaviour
     public Checkpoint cp2;
     public Guidance0Trigger G0T;
     public PlayerAttack PA;
-    public GameObject fallDetector; 
+    public GameObject fallDetector;
 
     void Start()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public enum DamageTypes
 {
     Feelie,
+    Tunk,
     wall, 
     rock
 }
@@ -16,20 +17,35 @@ public interface IDamageable
 
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
-    public DamageTypes damageType ; 
-    [SerializeField] protected float _life = 10;
-    //static float _allLife = 10;//change life for all enemies (can be used for achievement of how many enemies have hit)
-    public virtual void TakeDamage(int damage)
-    {
-        _life = Mathf.Max(_life - damage, 0);
-    }
-}
+    [Header("Basic parameters")]
+    public float normalSpeed;
+    public float chaseSpeed;
+    public float currentSpeed;
+    public Vector3 faceDir;
+    protected Rigidbody2D rb;
+    protected Animator anim;
+    public float maxHealth;
+    public float curHealth; 
+    public DamageTypes damageType ;
 
-/*public class Ghost: Enemy
-{
-    private void Start()
+    private void Awake()
     {
-        _life = 100f;
-        damageType = DamageTypes.ghost; 
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
+        currentSpeed = normalSpeed;
     }
-}*/
+
+    void Update()
+    {
+        faceDir = new Vector3(-transform.localScale.x, 0, 0);
+        Move();
+    }
+
+    public virtual void Move()
+    {
+        rb.velocity = new Vector2(currentSpeed * faceDir.x * Time.deltaTime, rb.velocity.y); 
+    }
+
+    public virtual void TakeDamage(int damage){ }
+}

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float movementForceInAir;
     public float airDragMultiplier = 0.95f;
     public float variableJumpHeightMultiplier = 0.5f;
+    public bool cantMove; 
 
     [Header("Jump")]
     private int amountOfJumpsLeft;
@@ -83,6 +84,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (cantMove)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePosition; 
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
         CheckInput();
         CheckMovementDirection();
         UpdateAnimations();      
