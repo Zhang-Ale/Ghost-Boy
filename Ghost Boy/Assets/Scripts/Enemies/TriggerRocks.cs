@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerRocks : Enemy
+public class TriggerRocks : MonoBehaviour
 {
     public int _rockLife = 1;
     public float _life; 
@@ -29,7 +29,6 @@ public class TriggerRocks : Enemy
         trig = GameObject.FindGameObjectWithTag("TriggerRock").GetComponent<TriggerRocks>();
         startTime = Time.time;
         _life = 30f;
-        damageType = DamageTypes.rock;
     }
     void Check()
     {

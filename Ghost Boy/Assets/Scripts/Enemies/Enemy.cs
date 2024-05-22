@@ -6,8 +6,6 @@ public enum DamageTypes
 {
     Feelie,
     Tunk,
-    wall, 
-    rock
 }
 
 public interface IDamageable
@@ -21,6 +19,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public float normalSpeed;
     public float chaseSpeed;
     public float currentSpeed;
+    PhysicsCheck PC; 
     public Vector3 faceDir;
     protected Rigidbody2D rb;
     protected Animator anim;
@@ -32,14 +31,23 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
+        PC = GetComponent<PhysicsCheck>();
         currentSpeed = normalSpeed;
+        curHealth = maxHealth; 
     }
 
-    void Update()
+    private void Update()
     {
         faceDir = new Vector3(-transform.localScale.x, 0, 0);
-        Move();
+        if(PC.touchLeftWall || PC.touchRightWall)
+        {
+            transform.localScale = new Vector3(faceDir.x, 1, 1); 
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Move(); 
     }
 
     public virtual void Move()

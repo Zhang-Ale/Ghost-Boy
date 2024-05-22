@@ -13,6 +13,11 @@ public class CharlieBullet : MonoBehaviour
     public float omega = 180;
     public float sign = 1;
     public float a;
+    PlayerAttack PA;
+    public LayerMask enemyLayers;
+    bool hitEnemy;
+    private ParticleSystem ps;
+    private Transform collidedObject;
 
     void Start()
     {
@@ -22,14 +27,18 @@ public class CharlieBullet : MonoBehaviour
         {
             sign = -1; 
         }
+        ps = transform.GetChild(0).GetComponent<ParticleSystem>();
     }
     
     void Update()
     {
         hitBox = GameObject.Find("Player_prefab").transform.GetChild(3).transform;
+        PA = GameObject.Find("Player_prefab").GetComponent<PlayerAttack>(); 
         Vector2 direction = (hitBox.transform.position - parent.position).normalized;
-            float distance = (hitBox.transform.position - parent.position).magnitude;
+        float distance = (hitBox.transform.position - parent.position).magnitude;
 
+        if (!hitEnemy)
+        {
             if (distance < pV * Time.deltaTime)
             {
                 parent.position = hitBox.transform.position;
@@ -41,6 +50,60 @@ public class CharlieBullet : MonoBehaviour
 
             direction = Quaternion.Euler(0, 0, sign * 90) * direction;
             transform.localPosition = Mathf.Min(a, distance / 2) * Mathf.Sin(alpha) * direction;
-            alpha += omega * Time.deltaTime * Mathf.PI / 180; 
+            alpha += omega * Time.deltaTime * Mathf.PI / 180;
+
+            Destroy(parent.gameObject, 2.5f);
+        }
+        else
+        {
+            parent.position = collidedObject.position;
+        }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & enemyLayers) != 0)
+        {
+            hitEnemy = true;
+            collidedObject = collision.transform;
+            StartCoroutine(ChangeParticleColorAndFade());
+            Destroy(this.gameObject, 5f);
+        }
+    }
+
+    private IEnumerator ChangeParticleColorAndFade()
+    {
+        ParticleSystem.MainModule mainModule = ps.main;
+        Color initialColor = mainModule.startColor.color;
+        Color targetColor = Color.white;
+        float duration = 1f; // Duration to change color to white
+        float fadeDuration = 1f; // Duration to fade out
+        float elapsedTime = 0f;
+
+        // Gradually change the color to white
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+            mainModule.startColor = Color.Lerp(initialColor, targetColor, t);
+            yield return null;
+        }
+
+        // Reset elapsed time for fading
+        elapsedTime = 0f;
+
+        // Gradually fade out the particles
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / fadeDuration);
+            Color fadedColor = Color.Lerp(targetColor, Color.clear, t);
+            mainModule.startColor = fadedColor;
+            yield return null;
+        }
+
+        // Ensure the particles are completely faded out
+        mainModule.startColor = Color.clear;
     }
 }

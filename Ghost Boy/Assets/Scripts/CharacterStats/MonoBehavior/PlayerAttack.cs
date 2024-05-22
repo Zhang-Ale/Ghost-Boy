@@ -12,7 +12,8 @@ public class PlayerAttack : MonoBehaviour
     public Transform RightSide;
     public Animator animator;
     public LayerMask enemyLayers;
-    public float attackRate = 1.5f;
+    public float benjiAttackRate = 1.25f;
+    public float charlieAttackRate = 1.8f;
     float nextAttackTime = 0f;
     public bool canAttack;
     public bool enemyInRange; 
@@ -22,12 +23,13 @@ public class PlayerAttack : MonoBehaviour
     public bool isCharlie = false;
 
     [Header("Benjamin's")]
-    public float attackRange = 1f;
+    public float benjiAttackRange = 1f;
     public RuntimeAnimatorController benjiController;
     public CircleCollider2D benjiCol; 
 
     [Header("Charlie's")]
     public RuntimeAnimatorController charlieController;
+    public float charlieAttackRange = 1f;
     public CircleCollider2D charlieCol; 
     public Transform randomAttackPos;
     public GameObject bullet;
@@ -68,20 +70,12 @@ public class PlayerAttack : MonoBehaviour
                 if (!isCharlie)
                 { 
                     BenjaminAttack();
-                    nextAttackTime = Time.time + 1f / attackRate;
+                    nextAttackTime = Time.time + 1f / benjiAttackRate;
                 }
                 else
                 {
-                    if (enemyInRange)
-                    {
-                        HitBox.transform.position = _enemy.transform.position;
-                        CharlieAttack();                        
-                    }
-                    else
-                    {
-                        HitBox.transform.position = randomAttackPos.transform.position;
-                    }
-
+                    CharlieAttack();
+                    nextAttackTime = Time.time + 1f / charlieAttackRate;
                     StopAllCoroutines();
                     Instantiate(bullet, bulletPos.transform.position, Quaternion.identity);
                     fire = true;
@@ -120,10 +114,20 @@ public class PlayerAttack : MonoBehaviour
 
     void CharlieAttack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitBox.transform.position, attackRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitBox.transform.position, charlieAttackRange, enemyLayers);
+        foreach (Collider2D enemyCol in hitEnemies)
         {
-            _enemy = enemy.GetComponent<GameObject>(); 
+            _enemy = enemyCol.transform.gameObject; 
+
+            if (enemyInRange)
+            {
+                HitBox.transform.position = _enemy.transform.position;
+            }
+            else
+            {
+                HitBox.transform.position = randomAttackPos.transform.position;
+            }
+
             if (_enemy.GetComponent<EnemyFSM>() == true)
             {
                 _enemy.GetComponent<EnemyFSM>().TakeDamage(characterStats.AttackDamage); 
@@ -135,10 +139,10 @@ public class PlayerAttack : MonoBehaviour
             }
             if (_enemy.GetComponent<Enemy>() == true)
             {
-                Enemy aenemy = enemy.gameObject.GetComponent<Enemy>();
-                if (aenemy != null && aenemy.damageType == DamageTypes.rock)
+                Enemy enemy = enemyCol.gameObject.GetComponent<Enemy>();
+                if (enemy != null && enemy.damageType == DamageTypes.Tunk || enemy.damageType == DamageTypes.Feelie)
                 {
-                    aenemy.TakeDamage(characterStats.AttackDamage);
+                    enemy.TakeDamage(characterStats.AttackDamage);
                 }
             }
         }
@@ -147,24 +151,25 @@ public class PlayerAttack : MonoBehaviour
     void BenjaminAttack()
     {
         animator.SetTrigger("isAttackOne");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitBox.transform.position, attackRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitBox.transform.position, benjiAttackRange, enemyLayers);
+        foreach (Collider2D enemyCol in hitEnemies)
         {
-            if (enemy.GetComponent<Feelie_Behaviour>() == true)
+            _enemy = enemyCol.transform.gameObject;
+            if (_enemy.GetComponent<EnemyFSM>() == true)
             {
-                enemy.GetComponent<Feelie_Behaviour>().TakeDamage(characterStats.AttackDamage);
+                _enemy.GetComponent<EnemyFSM>().TakeDamage(characterStats.AttackDamage);
             }
 
-            if (enemy.GetComponent<TriggerRocks>() == true)
+            if (_enemy.GetComponent<TriggerRocks>() == true)
             {
-                enemy.GetComponent<TriggerRocks>().DestroyRock();
+                _enemy.GetComponent<TriggerRocks>().DestroyRock();
             }
-            if (enemy.GetComponent<Enemy>() == true)
+            if (_enemy.GetComponent<Enemy>() == true)
             {
-                Enemy _enemy = enemy.gameObject.GetComponent<Enemy>();
-                if (_enemy != null && _enemy.damageType == DamageTypes.rock)
+                Enemy enemy = enemyCol.gameObject.GetComponent<Enemy>();
+                if (enemy != null && enemy.damageType == DamageTypes.Tunk || enemy.damageType == DamageTypes.Feelie)
                 {
-                    _enemy.TakeDamage(characterStats.AttackDamage);
+                    enemy.TakeDamage(characterStats.AttackDamage);
                 }
             }
         }
@@ -174,6 +179,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (HitBox == null)
             return;
-        Gizmos.DrawWireSphere(HitBox.transform.position, attackRange);
+        Gizmos.DrawWireSphere(HitBox.transform.position, benjiAttackRange);
     }
 }

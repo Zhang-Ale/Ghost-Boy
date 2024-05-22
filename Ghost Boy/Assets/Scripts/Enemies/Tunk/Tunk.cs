@@ -7,12 +7,12 @@ public class Tunk : Enemy
     private void Start()
     {
         damageType = DamageTypes.Tunk;
-
-        curHealth = maxHealth;
     }
 
-    void Update()
+    public override void Move()
     {
-        
+        base.Move();
+        anim.SetBool("walk", true);
     }
+
 }
