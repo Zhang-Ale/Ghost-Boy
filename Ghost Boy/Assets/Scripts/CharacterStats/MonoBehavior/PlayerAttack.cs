@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine; 
+using Cinemachine;
 
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Common")]
     public bool isLeft = false;
-    public GameObject HitBox;
     public Transform LeftSide;
     public Transform RightSide;
     public Animator animator;
@@ -23,18 +22,25 @@ public class PlayerAttack : MonoBehaviour
     public bool isCharlie = false;
 
     [Header("Benjamin's")]
+    public int benjiAttackDamage; 
+    public GameObject benjiHitBox;
     public float benjiAttackRange = 1f;
     public RuntimeAnimatorController benjiController;
-    public CircleCollider2D benjiCol; 
+    public CircleCollider2D benjiCol;
 
     [Header("Charlie's")]
+    public int charlieAttackDamage; 
+    public GameObject charlieHitBox;
     public RuntimeAnimatorController charlieController;
     public float charlieAttackRange = 1f;
-    public CircleCollider2D charlieCol; 
-    public Transform randomAttackPos;
+    public CircleCollider2D charlieCol;
+    public BulletPool bulletPool;
+    public Transform attackPos;
     public GameObject bullet;
     public GameObject bulletPos;
-    bool fire;
+    public bool wait;
+    float waitTimeCounter;
+    public float waitTime; 
 
     private void Awake()
     {
@@ -43,44 +49,46 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        characterStats.AttackDamage = 5;
+        characterStats.AttackDamage = benjiAttackDamage;
+        charlieHitBox.transform.position = attackPos.transform.position;
+        waitTimeCounter = waitTime;
     }
 
     void Update()
     {
         ChecksToDo();
+        TimeCounter();
 
         if (!isCharlie)
         {
             animator.runtimeAnimatorController = benjiController;
+            characterStats.AttackDamage = benjiAttackDamage;
             charlieCol.enabled = false;
             benjiCol.enabled = true;
         }
         else
         {
             animator.runtimeAnimatorController = charlieController;
+            characterStats.AttackDamage = charlieAttackDamage;
             benjiCol.enabled = false;
             charlieCol.enabled = true;
         }
 
-        if (Time.time >= nextAttackTime)
+        if (Input.GetMouseButtonDown(0) && canAttack)
         {
-            if (Input.GetMouseButtonDown(0) && canAttack)
+            if (!isCharlie)
             {
-                if (!isCharlie)
-                { 
+                if (Time.time >= nextAttackTime)
+                {
                     BenjaminAttack();
                     nextAttackTime = Time.time + 1f / benjiAttackRate;
                 }
-                else
-                {
-                    CharlieAttack();
-                    nextAttackTime = Time.time + 1f / charlieAttackRate;
-                    StopAllCoroutines();
-                    Instantiate(bullet, bulletPos.transform.position, Quaternion.identity);
-                    fire = true;
-                    StartCoroutine(BulletFire());
-                }
+            }
+            else if(isCharlie && !wait)
+            {
+                CharlieAttack();
+                wait = true;
+                bulletPool.GetBullet(); 
             }
         }
     }
@@ -95,37 +103,36 @@ public class PlayerAttack : MonoBehaviour
         {
             isLeft = false;
         }
-
-        if (fire)
-        {
-            bulletPos.SetActive(true);
-        }
-        else
-        {
-            bulletPos.SetActive(false);
-        }
     }
 
-    IEnumerator BulletFire()
+    void TimeCounter()
     {
-        yield return new WaitForSeconds(6.5f);
-        fire = false;
+        if (wait)
+        {
+            waitTimeCounter -= Time.deltaTime;
+            if (waitTimeCounter <= 0)
+            {
+                wait = false;
+                bulletPool.ReturnBullet(); 
+                waitTimeCounter = waitTime;
+            }
+        }
     }
 
     void CharlieAttack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitBox.transform.position, charlieAttackRange, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(charlieHitBox.transform.position, charlieAttackRange, enemyLayers);
         foreach (Collider2D enemyCol in hitEnemies)
         {
             _enemy = enemyCol.transform.gameObject; 
 
             if (enemyInRange)
             {
-                HitBox.transform.position = _enemy.transform.position;
+                charlieHitBox.transform.position = _enemy.transform.position;
             }
             else
             {
-                HitBox.transform.position = randomAttackPos.transform.position;
+                charlieHitBox.transform.position = attackPos.transform.position;
             }
 
             if (_enemy.GetComponent<EnemyFSM>() == true)
@@ -142,7 +149,7 @@ public class PlayerAttack : MonoBehaviour
                 Enemy enemy = enemyCol.gameObject.GetComponent<Enemy>();
                 if (enemy != null && enemy.damageType == DamageTypes.Tunk || enemy.damageType == DamageTypes.Feelie)
                 {
-                    enemy.TakeDamage(characterStats.AttackDamage);
+                    enemy.OnTakeDamage(characterStats.AttackDamage, this.transform);
                 }
             }
         }
@@ -151,7 +158,7 @@ public class PlayerAttack : MonoBehaviour
     void BenjaminAttack()
     {
         animator.SetTrigger("isAttackOne");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(HitBox.transform.position, benjiAttackRange, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(benjiHitBox.transform.position, benjiAttackRange, enemyLayers);
         foreach (Collider2D enemyCol in hitEnemies)
         {
             _enemy = enemyCol.transform.gameObject;
@@ -169,16 +176,9 @@ public class PlayerAttack : MonoBehaviour
                 Enemy enemy = enemyCol.gameObject.GetComponent<Enemy>();
                 if (enemy != null && enemy.damageType == DamageTypes.Tunk || enemy.damageType == DamageTypes.Feelie)
                 {
-                    enemy.TakeDamage(characterStats.AttackDamage);
+                    enemy.OnTakeDamage(characterStats.AttackDamage, this.transform);
                 }
             }
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (HitBox == null)
-            return;
-        Gizmos.DrawWireSphere(HitBox.transform.position, benjiAttackRange);
     }
 }

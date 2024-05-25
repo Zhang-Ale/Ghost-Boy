@@ -19,35 +19,22 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public float normalSpeed;
     public float chaseSpeed;
     public float currentSpeed;
-    PhysicsCheck PC; 
-    public Vector3 faceDir;
+    protected Vector3 faceDir;
     protected Rigidbody2D rb;
     protected Animator anim;
+    [Header("Attack")]
+    public DamageTypes damageType;
+    Transform attacker;
+    [Header("Health")]
     public float maxHealth;
-    public float curHealth; 
-    public DamageTypes damageType ;
+    public float curHealth;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        PC = GetComponent<PhysicsCheck>();
         currentSpeed = normalSpeed;
-        curHealth = maxHealth; 
-    }
-
-    private void Update()
-    {
-        faceDir = new Vector3(-transform.localScale.x, 0, 0);
-        if(PC.touchLeftWall || PC.touchRightWall)
-        {
-            transform.localScale = new Vector3(faceDir.x, 1, 1); 
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        Move(); 
+        curHealth = maxHealth;
     }
 
     public virtual void Move()
@@ -55,5 +42,18 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         rb.velocity = new Vector2(currentSpeed * faceDir.x * Time.deltaTime, rb.velocity.y); 
     }
 
-    public virtual void TakeDamage(int damage){ }
+    public virtual void OnTakeDamage(int damage, Transform attackTrans)
+    {
+        attacker = attackTrans;
+        if (attackTrans.position.x - transform.position.x > 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        if (attackTrans.position.x - transform.position.x < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+
+    public virtual void TakeDamage(int damage) { }
 }

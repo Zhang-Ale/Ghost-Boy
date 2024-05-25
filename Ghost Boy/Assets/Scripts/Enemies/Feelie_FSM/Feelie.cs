@@ -25,6 +25,7 @@ public class Feelie : Enemy
     public GameObject bloodEffect;
     public FeelieHpBar HealthBar;
     public bool flipped = false;
+    public bool critHit;
     #endregion
 
     #region Private Variables
@@ -215,7 +216,7 @@ public class Feelie : Enemy
         {
             if (!cooling && enemy.GetComponent<PlayerHealth>() == true)
             {
-                enemy.GetComponent<PlayerHealth>().DamagePlayer(20);
+                enemy.GetComponent<PlayerHealth>().DamagePlayer(20, transform, critHit);
             }
         }
     }

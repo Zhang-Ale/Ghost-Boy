@@ -86,7 +86,7 @@ public class SpawnOnlyUI : MonoBehaviour
     void LightsOn()
     {
         progress += 0.05f;
-        playerLight.intensity = Mathf.Lerp(0, 0.8f, progress);
+        playerLight.intensity = Mathf.Lerp(0, 0.6f, progress);
         firstLight.intensity = Mathf.Lerp(0, 1.1f, progress);
     }
 

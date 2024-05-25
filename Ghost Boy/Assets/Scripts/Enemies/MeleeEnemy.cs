@@ -28,6 +28,7 @@ public class MeleeEnemy : MonoBehaviour
     public Light2D blinkLight;
     public FeelieHpBar HealthBar;
     public bool isDamaged;
+    public bool critHit;
 
     private void Awake()
     {
@@ -107,7 +108,7 @@ public class MeleeEnemy : MonoBehaviour
     private void PlayerTakeDamage()
     {
         if (PlayerInSight())
-            playerHealth.DamagePlayer(20);
+            playerHealth.DamagePlayer(20, transform, critHit);
     }
 
     void Die()

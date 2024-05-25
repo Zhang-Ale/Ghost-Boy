@@ -28,7 +28,7 @@ public class PlayerAfterImage : MonoBehaviour
         if (MA.gameStart) 
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
-            playerSR = player.GetChild(7).GetComponent<SpriteRenderer>(); 
+            playerSR = player.GetChild(6).GetComponent<SpriteRenderer>(); 
             alpha = alphaSet;
             SR.sprite = playerSR.sprite;
             transform.position = player.position;

@@ -42,21 +42,20 @@ public class Shake : MonoBehaviour
     }
     public IEnumerator DashShaking()
     {
-        Shake.Instance.CamShake(1.5f, 2.5f);
+        Shake.Instance.CamShake(1.5f, 0.5f);
         isShaking = true;
         yield return new WaitForSeconds(0.2f);
-        Shake.Instance.CamShake(0, 2.5f);
+        Shake.Instance.CamShake(0, 0.5f);
         yield return new WaitForSeconds(2.3f);
         isShaking = false;
     }
 
     public IEnumerator DamagedShaking()
     {
-        yield return new WaitForSeconds(0.25f);
-        Shake.Instance.CamShake(2.5f, 3.5f);
+        Shake.Instance.CamShake(5f, 0.5f);
         isShaking = true;
         yield return new WaitForSeconds(0.2f);
-        Shake.Instance.CamShake(0, 2.5f);
+        Shake.Instance.CamShake(0, 0.5f);
         yield return new WaitForSeconds(2.3f);
         isShaking = false;
     }

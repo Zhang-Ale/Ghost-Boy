@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,11 +12,17 @@ public class PlayerHealth : MonoBehaviour
     public float flashTime;
     private SpriteRenderer sr;
     public Shake shake;
-    public ScreenFlash sf;
     [SerializeField]
     GameObject regenerationHP;
     public Transform regenerationPos;
     Slider healthBar;
+    [Header("Invulnerability")]
+    public bool invulnerable;
+    public float invulnerableDuration;
+    private float invulnerableCounter;
+    public UnityEvent<Transform> OnGetHit;
+    public UnityEvent<Transform> OnGetCritHit;
+    public UnityEvent OnDeath; 
 
     private void Awake()
     {
@@ -24,22 +31,32 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        characterStats.MaxHealth = 1000;
-        characterStats.CurHealth = 1000;
+        characterStats.MaxHealth = 100;
+        characterStats.CurHealth = 100;
         if (healthBar == null)
         {
             healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
             healthBar.maxValue = characterStats.MaxHealth;
             healthBar.value = characterStats.CurHealth;
         }     
-        sr =transform.GetChild(7). GetComponent<SpriteRenderer>();
+        sr =transform.GetChild(6).GetComponent<SpriteRenderer>();
     }
 
     public void Update()
     {
         healthBar.maxValue = characterStats.MaxHealth;
         healthBar.value = characterStats.CurHealth;
-        Death();
+
+        if (invulnerable)
+        {
+            invulnerableCounter -= Time.deltaTime;
+            if (invulnerableCounter <= 0)
+            {
+                invulnerable = false;
+            }
+        }
+
+        regenerationHP.transform.position = transform.position;
     }
 
     public void SetHealth(int hp)
@@ -47,15 +64,59 @@ public class PlayerHealth : MonoBehaviour
         healthBar.value = hp;
     }
 
-    public void DamagePlayer(int damage)
+    public void DamagePlayer(int damage, Transform attacker, bool critHit)
     {
-        sf.FlashScreen();
+        if (invulnerable)
+            return;
 
-        characterStats.CurHealth -= damage;
-        SetHealth(characterStats.CurHealth);
+        if (critHit)
+        {
+            OnGetCritHit?.Invoke(attacker.transform);
+        }
 
-        BlinkPlayer(blinks, flashTime);
-        shake.StartCoroutine("DamagedShaking");
+        if(characterStats.CurHealth - damage > 0)
+        {
+            characterStats.CurHealth -= damage;
+            PC.anim.SetTrigger("Hurt");
+            shake.StartCoroutine("DamagedShaking");
+            BlinkPlayer(blinks, flashTime);
+            TriggerInvulnerable();
+            OnGetHit?.Invoke(attacker.transform);
+            SetHealth(characterStats.CurHealth);
+        }
+        else
+        {
+            characterStats.CurHealth = 0;
+            shake.StartCoroutine("DamagedShaking");
+            BlinkPlayer(blinks, flashTime);
+            SetHealth(characterStats.CurHealth);
+            if(characterStats.CurHealth <= 0)
+            {
+                OnDeath?.Invoke();
+            }
+        }
+    }
+
+    public void Death()
+    {
+        PC.isDead = true;
+        Debug.Log("dead");
+        StartCoroutine(RespawnCount()); 
+    }
+
+    IEnumerator RespawnCount()
+    {
+        yield return new WaitForSeconds(3f);
+        PC.isDead = false;
+    }
+
+    private void TriggerInvulnerable()
+    {
+        if (!invulnerable)
+        {
+            invulnerable = true;
+            invulnerableCounter = invulnerableDuration;
+        }
     }
 
     void BlinkPlayer(int numBlinks, float seconds)
@@ -74,19 +135,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Death()
-    {        
-        if (characterStats.CurHealth == 0 || characterStats.CurHealth <= 0)
-        {
-            if (0 == 0)
-            {
-                Respawn();
-            }
-        }
-    }
     public void Respawn()
     {
-        transform.position=PC.respawnPoint;
+        transform.position = PC.respawnPoint;
         characterStats.CurHealth = characterStats.MaxHealth;
         SetHealth(100); 
         RegenerationEffect();
@@ -94,6 +145,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void RegenerationEffect()
     {
-        Instantiate(regenerationHP, regenerationPos.transform.position, regenerationHP.transform.rotation);
+        regenerationHP.SetActive(true);
     }
 }

@@ -6,8 +6,7 @@ public class PhysicsCheck : MonoBehaviour
 {
     private CapsuleCollider2D col; 
     public bool manual; 
-    public Vector2 bottomOffset;
-    public Vector2 leftOffset, rightOffset; 
+    public Vector2 bottomOffset, leftOffset, rightOffset;
     public float checkRadius;
     public LayerMask groundLayer;
 
@@ -18,10 +17,10 @@ public class PhysicsCheck : MonoBehaviour
     void Awake()
     {
         col = GetComponent<CapsuleCollider2D>();
-        if (!manual)
+        if (manual)
         {
-            rightOffset = new Vector2((col.bounds.size.x + col.offset.x) / 2, col.bounds.size.y/2);
-            leftOffset = new Vector2(-rightOffset.x, rightOffset.y); 
+            rightOffset = new Vector2((col.bounds.size.x) / 2 + col.offset.x, col.bounds.size.y);
+            leftOffset = new Vector2(-(col.bounds.size.x) / 2 + col.offset.x, col.bounds.size.y); 
         }
     }
 

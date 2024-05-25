@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharlieBullet : MonoBehaviour
 {
     Transform parent;
-    [SerializeField] Transform hitBox; 
+    public Transform hitBox; 
     public float pV = 20;
     public float aMin = 3;
     public float aMax = 5;
@@ -32,7 +32,6 @@ public class CharlieBullet : MonoBehaviour
     
     void Update()
     {
-        hitBox = GameObject.Find("Player_prefab").transform.GetChild(3).transform;
         PA = GameObject.Find("Player_prefab").GetComponent<PlayerAttack>(); 
         Vector2 direction = (hitBox.transform.position - parent.position).normalized;
         float distance = (hitBox.transform.position - parent.position).magnitude;
@@ -51,14 +50,11 @@ public class CharlieBullet : MonoBehaviour
             direction = Quaternion.Euler(0, 0, sign * 90) * direction;
             transform.localPosition = Mathf.Min(a, distance / 2) * Mathf.Sin(alpha) * direction;
             alpha += omega * Time.deltaTime * Mathf.PI / 180;
-
-            Destroy(parent.gameObject, 2.5f);
         }
         else
         {
             parent.position = collidedObject.position;
         }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,7 +64,6 @@ public class CharlieBullet : MonoBehaviour
             hitEnemy = true;
             collidedObject = collision.transform;
             StartCoroutine(ChangeParticleColorAndFade());
-            Destroy(this.gameObject, 5f);
         }
     }
 

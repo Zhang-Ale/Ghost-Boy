@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     private float movementInputDirection;
+    public float defaultMoveSpeed; 
     public float movementSpeed = 10.0f;
     public float movementForceInAir;
     public float airDragMultiplier = 0.95f;
@@ -46,6 +47,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canFly;
     public bool isFlying; 
     private bool flipped = false;
+    public float hurtForce;
+    public float critHurtForce; 
+    public bool isHurt;
+    public bool isDead; 
 
     [Header("Attached components")]
     private Rigidbody2D rb;
@@ -56,6 +61,7 @@ public class PlayerController : MonoBehaviour
     private Camera MainCamera;
     public GameObject shockwave;
     PlayerAttack PA;
+    public RectTransform canvasRectTransform;
 
     [Header("DASH")]
     public float dashSpeed;
@@ -80,6 +86,7 @@ public class PlayerController : MonoBehaviour
         staminaIncreaseCoroutine = StartCoroutine(IncreaseStats(2, 0));
         jumpSlider.value = 0f;
         MainCamera = Camera.main;
+        movementSpeed = defaultMoveSpeed; 
     }
 
     void Update()
@@ -94,26 +101,44 @@ public class PlayerController : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
-        CheckInput();
-        CheckMovementDirection();
-        UpdateAnimations();      
+        if (!isHurt)
+        {
+            CheckInput();
+            CheckDash();
+        }
+
         CheckIfCanJump();
-        CheckDash();
-        var screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-80f, 0f, 0f);
-        jumpSlider.transform.position = screenPos;
-        flySlider.transform.position = screenPos;
-        //Ask Professor
+        CheckMovementDirection();
+        
+        UpdateAnimations();
+        Vector3 screenPos = MainCamera.WorldToScreenPoint(transform.position) + new Vector3(-1040f, -500f, 0f);
+        jumpSlider.transform.localPosition = screenPos;
+        flySlider.transform.localPosition = screenPos;
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             shockwave.SetActive(true);
             shockwave.GetComponent<Shockwave>().CallShockwave(); 
         }
+
+        if (isHurt || isDead)
+        {
+            movementSpeed = 0;
+        }
+        else
+        {
+            movementSpeed = defaultMoveSpeed; 
+        }
     }
 
     private void FixedUpdate()
     {
-        CheckIfCanFly();
-        ApplyMovement();
+        if (!isHurt)
+        {
+            CheckIfCanFly();
+            ApplyMovement();
+        }
+
         CheckSurroundings();
     }
 
@@ -169,6 +194,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Walking", isWalking);
         anim.SetBool("Grounded", isGrounded);
         anim.SetFloat("Speed", rb.velocity.y);
+        anim.SetBool("Dead", isDead);
     }
 
     private void CheckInput()
@@ -411,6 +437,20 @@ public class PlayerController : MonoBehaviour
                 _isDashing = false;
             }
         }
+    }
+
+    public void GetHurt(Transform attacker)
+    {
+        isHurt = true;
+        Vector2 direction = new Vector2(transform.position.x - attacker.position.x, 0).normalized;
+        rb.AddForce(direction * hurtForce, ForceMode2D.Impulse); 
+    }
+
+    public void GetCritHurt(Transform attacker)
+    {
+        isHurt = true;
+        Vector2 direction = new Vector2(transform.position.x - attacker.position.x, 0).normalized;
+        rb.AddForce(direction * critHurtForce, ForceMode2D.Impulse);
     }
 
     private void Flip()

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Benjamin Data
   m_EditorClassIdentifier: 
   curCharacter: 0
-  maxHealth: 1000
-  curHealth: 1000
+  maxHealth: 100
+  curHealth: 100
   attackDamage: 5
   maxUltCharge: 100
   curUltCharge: 0

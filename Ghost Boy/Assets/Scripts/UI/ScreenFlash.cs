@@ -25,7 +25,7 @@ public class ScreenFlash : MonoBehaviour
 
     IEnumerator Flash()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
         img.color = flashColor;
         CG.alpha = 1;
         yield return new WaitForSeconds(time);
