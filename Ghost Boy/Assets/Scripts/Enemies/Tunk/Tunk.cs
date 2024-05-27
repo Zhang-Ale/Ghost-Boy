@@ -20,7 +20,6 @@ public class Tunk : Enemy
     public bool dead; 
     public Animator shieldAnim;
     public ParticleSystem ps;
-    public bool spotPlayer; 
     public UnityEvent<Transform> OnGetHit;
 
     private void Start()
@@ -39,6 +38,7 @@ public class Tunk : Enemy
             wait = true;
         }
 
+        SpotPlayer(); 
         TimeCounter();
 
         if (spotPlayer)
@@ -48,7 +48,6 @@ public class Tunk : Enemy
 
         if (invulnerable)
         {
-            shieldAnim.SetTrigger("On");
             invulnerableCounter -= Time.deltaTime;
             if (invulnerableCounter <= 0)
             {
@@ -98,6 +97,7 @@ public class Tunk : Enemy
             curHealth -= damage;
             anim.SetTrigger("hurt");
             currentSpeed = 0;
+            shieldAnim.SetTrigger("On");
             TriggerInvulnerable();
             OnGetHit?.Invoke(attackTrans.transform);
             if (curHealth <= maxHealth / 2)

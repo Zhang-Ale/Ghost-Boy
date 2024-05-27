@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events; 
 
 public enum DamageTypes
 {
@@ -22,9 +23,15 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     protected Vector3 faceDir;
     protected Rigidbody2D rb;
     protected Animator anim;
+    public Vector2 boxSize = new Vector2(5, 5);
+    public Vector2 boxOffset = Vector2.zero;   
     [Header("Attack")]
     public DamageTypes damageType;
+    public LayerMask playerLayer;
+    public bool spotPlayer;
     Transform attacker;
+    public UnityEvent OnSpotPlayer;
+    public UnityEvent OnIdle; 
     [Header("Health")]
     public float maxHealth;
     public float curHealth;
@@ -52,6 +59,36 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         if (attackTrans.position.x - transform.position.x < 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+
+    public void SpotPlayer()
+    {
+        Vector2 boxCenter = (Vector2)transform.position + boxOffset;
+
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(boxCenter, boxSize, 0, playerLayer);
+
+        bool playerSpotted = false;
+        foreach (Collider2D collider in hitColliders)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                playerSpotted = true;
+                break;
+            }
+        }
+
+        if (playerSpotted != spotPlayer)
+        {
+            spotPlayer = playerSpotted;
+            if (spotPlayer)
+            {
+                MusicManager.Instance.ChangeMusic(MusicManager.MusicCondition.Fight);
+            }
+            else
+            {
+                MusicManager.Instance.ChangeMusic(MusicManager.MusicCondition.Travel);
+            }
         }
     }
 

@@ -43,7 +43,6 @@ public class Feelie_Behaviour : Enemy
     [SerializeField]
     private bool cooling; //check is this is cooling after attack
     private float intTimer;
-    Music music;
     #endregion
 
     private void Awake()
@@ -58,7 +57,6 @@ public class Feelie_Behaviour : Enemy
         SR = GetComponent<SpriteRenderer>();
         originalColor = SR.color;
         curHealth = maxHealth;
-        music = GameObject.Find("AudioManager").GetComponent<Music>();
         HealthBar.SetHealth(curHealth, maxHealth);
         flipped = false; 
     }

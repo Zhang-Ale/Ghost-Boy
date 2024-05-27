@@ -13,11 +13,14 @@ public class CharlieBullet : MonoBehaviour
     public float omega = 180;
     public float sign = 1;
     public float a;
+    public float distance;
     PlayerAttack PA;
     public LayerMask enemyLayers;
-    bool hitEnemy;
+    public bool hitEnemy;
     private ParticleSystem ps;
     private Transform collidedObject;
+    GameObject _enemy;
+    CharacterStats characterStats;
 
     void Start()
     {
@@ -34,7 +37,7 @@ public class CharlieBullet : MonoBehaviour
     {
         PA = GameObject.Find("Player_prefab").GetComponent<PlayerAttack>(); 
         Vector2 direction = (hitBox.transform.position - parent.position).normalized;
-        float distance = (hitBox.transform.position - parent.position).magnitude;
+        distance = (hitBox.transform.position - parent.position).magnitude;
 
         if (!hitEnemy)
         {
@@ -50,10 +53,16 @@ public class CharlieBullet : MonoBehaviour
             direction = Quaternion.Euler(0, 0, sign * 90) * direction;
             transform.localPosition = Mathf.Min(a, distance / 2) * Mathf.Sin(alpha) * direction;
             alpha += omega * Time.deltaTime * Mathf.PI / 180;
+            if(alpha >= 4000)
+            {
+                alpha = 0; 
+            }
         }
         else
         {
             parent.position = collidedObject.position;
+            Attack(); 
+            alpha = 0; 
         }
     }
 
@@ -64,6 +73,35 @@ public class CharlieBullet : MonoBehaviour
             hitEnemy = true;
             collidedObject = collision.transform;
             StartCoroutine(ChangeParticleColorAndFade());
+        }
+    }
+
+    void Attack()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(parent.transform.position, 1, enemyLayers);
+        foreach (Collider2D enemyCol in hitEnemies)
+        {
+            _enemy = enemyCol.transform.gameObject;
+
+            characterStats = PA.characterStats;
+
+            if (_enemy.GetComponent<EnemyFSM>() == true)
+            {
+                _enemy.GetComponent<EnemyFSM>().TakeDamage(characterStats.AttackDamage);
+            }
+
+            if (_enemy.GetComponent<TriggerRocks>() == true)
+            {
+                _enemy.GetComponent<TriggerRocks>().DestroyRock();
+            }
+            if (_enemy.GetComponent<Enemy>() == true)
+            {
+                Enemy enemy = enemyCol.gameObject.GetComponent<Enemy>();
+                if (enemy != null && enemy.damageType == DamageTypes.Tunk || enemy.damageType == DamageTypes.Feelie)
+                {
+                    enemy.OnTakeDamage(characterStats.AttackDamage, this.transform);
+                }
+            }
         }
     }
 
@@ -98,6 +136,7 @@ public class CharlieBullet : MonoBehaviour
             yield return null;
         }
 
+        hitEnemy = false; 
         // Ensure the particles are completely faded out
         mainModule.startColor = Color.clear;
     }

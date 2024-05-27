@@ -5,9 +5,9 @@ using UnityEngine;
 public class CheckEnemy : MonoBehaviour
 {
     public PlayerAttack PA;
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Breakable"))
+        if (other.gameObject.CompareTag("EnemyHitbox") || other.gameObject.CompareTag("Breakable"))
         {
             PA.enemyInRange = true; 
         }
@@ -15,7 +15,7 @@ public class CheckEnemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Breakable"))
+        if (other.gameObject.CompareTag("EnemyHitbox") || other.gameObject.CompareTag("Breakable"))
         {
             PA.enemyInRange = false;
         }

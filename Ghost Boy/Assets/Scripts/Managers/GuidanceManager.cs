@@ -15,6 +15,4 @@ public class GuidanceManager : Singleton<GuidanceManager>
         }
         DontDestroyOnLoad(this);
     }
-
-    
 }

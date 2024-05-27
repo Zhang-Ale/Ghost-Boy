@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     float nextAttackTime = 0f;
     public bool canAttack;
     public bool enemyInRange; 
-    private CharacterStats characterStats;
+    public CharacterStats characterStats;
     GameObject _enemy; 
     public GameObject enemyCheckCollider;
     public bool isCharlie = false;
@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
     public float charlieAttackRange = 1f;
     public CircleCollider2D charlieCol;
     public BulletPool bulletPool;
-    public Transform attackPos;
+    public Transform charlieAttackPos;
     public GameObject bullet;
     public GameObject bulletPos;
     public bool wait;
@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         characterStats.AttackDamage = benjiAttackDamage;
-        charlieHitBox.transform.position = attackPos.transform.position;
+        charlieHitBox.transform.position = charlieAttackPos.transform.position;
         waitTimeCounter = waitTime;
     }
 
@@ -58,6 +58,15 @@ public class PlayerAttack : MonoBehaviour
     {
         ChecksToDo();
         TimeCounter();
+
+        if (!isLeft)
+        {
+            charlieAttackPos.transform.position = new Vector2(transform.position.x + 2.5f, transform.position.y);
+        }
+        else
+        {
+            charlieAttackPos.transform.position = new Vector2(transform.position.x - 2.5f, transform.position.y);
+        }
 
         if (!isCharlie)
         {
@@ -74,6 +83,15 @@ public class PlayerAttack : MonoBehaviour
             charlieCol.enabled = true;
         }
 
+        if (enemyInRange && _enemy != null)
+        {
+            charlieHitBox.transform.position = _enemy.transform.position;
+        }
+        else
+        {
+            charlieHitBox.transform.position = charlieAttackPos.transform.position;
+        }
+
         if (Input.GetMouseButtonDown(0) && canAttack)
         {
             if (!isCharlie)
@@ -86,7 +104,6 @@ public class PlayerAttack : MonoBehaviour
             }
             else if(isCharlie && !wait)
             {
-                CharlieAttack();
                 wait = true;
                 bulletPool.GetBullet(); 
             }
@@ -115,42 +132,6 @@ public class PlayerAttack : MonoBehaviour
                 wait = false;
                 bulletPool.ReturnBullet(); 
                 waitTimeCounter = waitTime;
-            }
-        }
-    }
-
-    void CharlieAttack()
-    {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(charlieHitBox.transform.position, charlieAttackRange, enemyLayers);
-        foreach (Collider2D enemyCol in hitEnemies)
-        {
-            _enemy = enemyCol.transform.gameObject; 
-
-            if (enemyInRange)
-            {
-                charlieHitBox.transform.position = _enemy.transform.position;
-            }
-            else
-            {
-                charlieHitBox.transform.position = attackPos.transform.position;
-            }
-
-            if (_enemy.GetComponent<EnemyFSM>() == true)
-            {
-                _enemy.GetComponent<EnemyFSM>().TakeDamage(characterStats.AttackDamage); 
-            }
-
-            if (_enemy.GetComponent<TriggerRocks>() == true)
-            {
-                _enemy.GetComponent<TriggerRocks>().DestroyRock();
-            }
-            if (_enemy.GetComponent<Enemy>() == true)
-            {
-                Enemy enemy = enemyCol.gameObject.GetComponent<Enemy>();
-                if (enemy != null && enemy.damageType == DamageTypes.Tunk || enemy.damageType == DamageTypes.Feelie)
-                {
-                    enemy.OnTakeDamage(characterStats.AttackDamage, this.transform);
-                }
             }
         }
     }

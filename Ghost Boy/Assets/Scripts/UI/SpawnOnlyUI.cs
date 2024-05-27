@@ -21,7 +21,6 @@ public class SpawnOnlyUI : MonoBehaviour
     public Light2D playerLight;
     public Light2D firstLight;
     float progress = 0;
-    AudioSource AS; 
 
     [Header("GameplayUI")] 
     public DialogueTwoImage D2Image;
@@ -45,7 +44,6 @@ public class SpawnOnlyUI : MonoBehaviour
     {
         clicked = false;
         storyDisplaying = false;
-        AS = GetComponent<AudioSource>();
     }
 
     public void SpawnLevelStart()
@@ -66,7 +64,6 @@ public class SpawnOnlyUI : MonoBehaviour
         if (menu.startActivated)
         {
             fallDetector.SetActive(true);
-            AS.Play(); 
             storyTextPF.FadeOut();
             fullScreenPF.FadeOut();
             IntroText.SetActive(false);

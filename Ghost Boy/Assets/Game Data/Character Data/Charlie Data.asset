@@ -15,7 +15,7 @@ MonoBehaviour:
   curCharacter: 1
   maxHealth: 100
   curHealth: 100
-  attackDamage: 5
+  attackDamage: 2
   maxUltCharge: 100
   curUltCharge: 0
   killPoint: 0
